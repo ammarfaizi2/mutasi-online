@@ -1,2 +1,5 @@
 <?php
-define("MANUAL_ROUTE", true);
+define("DBHOST", "localhost");
+define("DBUSER", "debian-sys-maint");
+define("DBPASS", "");
+define("DBNAME", "mutasi");
