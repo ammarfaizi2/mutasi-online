@@ -12,25 +12,31 @@ class LoginController
 	{
 		if (isset($_POST['login'], $_POST['username'], $_POST['password'])) {
 			$st = DB::pdo()->prepare("SELECT `password` FROM `admin` WHERE `username`=:user LIMIT 1;");
-			$st->execute(array(
+			$exe = $st->execute(array(
 					":user" => ($user = strtolower($_POST['username']))
 				));
+			if (!$exe) {
+				var_dump($st->errorInfo());
+				die(1);
+			}
 			if ($st = $st->fetch(PDO::FETCH_NUM)) {
+				var_dump($st);
 				if (T::decrypt($st[0], "polres") === $_POST['password']) {
-					$sess = rstr(64);
+					$sess = rstr(32);
 					$key  = rstr(32);
 					$expired = time()+(3600*24*14);
-					$st = DB::pdo()->prepare("INSERT INTO `admin_session` (`id`, `session`, `session_key`, `created_at`, `expired_at`) VALUES (null, :sess, :sesskey, :cr, :ex);");
+					$st = DB::pdo()->prepare("INSERT INTO `admin_session` (`id_session`, `username`, `session`, `session_key`, `created_at`, `expired_at`) VALUES (null, :user, :sess, :sesskey, :cr, :ex);");
 					$exe = $st->execute(array(
+							":user" => $user,
 							":sess" => $sess,
 							":sesskey" => $key,
 							":cr" => (date("Y-m-d H:i:s")),
 							":ex" => (date("Y-m-d H:i:s", $expired))
 						));
 					if ($exe) {
-							setcookie("user_session", T::encrypt($sess, $key), $expired);
-							setcookie("user", T::encrypt($user, "polres"), $expired);
-							setcookie("sess_key", T::encrypt($key, "polres"), $expired);
+							setcookie("user_session", $sess, $expired);
+							setcookie("user", $user, $expired);
+							setcookie("sess_key", $key, $expired);
 							header("location:?login=ok");
 							die(1);
 					} else {
