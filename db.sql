@@ -16,35 +16,35 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `admin` (`id`, `username`, `password`, `nama_polres`, `last_login`) VALUES
-(1, 'kabupaten_cilacap',  'LwkyKF/S0QPVXEDiy/8zNCAA', 'Kabupaten Cilacap',  NULL),
-(2, 'kabupaten_banyumas', 'r0gy3CXLLcfEzWDSKoWSxTAA', 'Kabupaten Banyumas', NULL),
-(3, 'kabupaten_purbalingga',  'LviTJscSUObEWLvqhjCiPEAA', 'Kabupaten Purbalingga',  NULL),
-(4, 'kabupaten_banjarnegara', 'zFn8tIjLPcTC1GDqxn8jJDAA', 'Kabupaten Banjarnegara', NULL),
-(5, 'kabupaten_kebumen',  'zH3MNNTSydx1webLIoWstYAA', 'Kabupaten Kebumen',  NULL),
-(6, 'kabupaten_purworejo',  'z7cyJJ3SKcLCUfbbPhmjPRAA', 'Kabupaten Purworejo',  NULL),
-(7, 'kabupaten_wonosobo', 'roCiKzASMcx10IHiivC8uIAA', 'Kabupaten Wonosobo', NULL),
-(8, 'kabupaten_magelang', 'zYvdJgQSsSb1Ne1LIom9RWAA', 'Kabupaten Magelang', NULL),
-(9, 'kabupaten_boyolali', 'LL/T3yqKTOPCUdDyPp8bKQAA', 'Kabupaten Boyolali', NULL),
-(10,  'kabupaten_klaten', 'LkQDx1sK1QP1VdDyg3WiOBAA', 'Kabupaten Klaten', NULL),
-(11,  'kabupaten_sukoharjo',  'r8wNOzsSMELkwAvygzmasIAA', 'Kabupaten Sukoharjo',  NULL),
-(12,  'kabupaten_wonogiri', 'LoScKtKKNcbCwQbrhj8zMLAA', 'Kabupaten Wonogiri', NULL),
-(13,  'kabupaten_karanganyar',  'LRDNJ/wKzdfkUXdbgz8LtcAA', 'Kabupaten Karanganyar',  NULL),
-(14,  'kabupaten_sragen', 'LJvLIUHLVRP1Qc1zhzWKtMAA', 'Kabupaten Sragen', NULL),
-(15,  'kabupaten_grobogan', 'z5M8qwETURlCQcHah9CC2DAA', 'Kabupaten Grobogan', NULL),
-(16,  'kabupaten_blora',  'rML8McHTMEP1xAhKgzmDOWAA', 'Kabupaten Blora',  NULL),
-(17,  'kabupaten_rembang',  'zsQzuwST0Qp1QYvyh9W8IUAA', 'Kabupaten Rembang',  NULL),
-(18,  'kabupaten_pati', 'rKvqoUjLTRPVXKHSM1mc3HAA', 'Kabupaten Pati', NULL),
-(19,  'kabupaten_kudus',  'z5SSKM3L1QpCQYDqO1miPNAA', 'Kabupaten Kudus',  NULL),
-(20,  'kabupaten_jepara', 'zMzMK+0TSRP8TNbLOxmyMCAA', 'Kabupaten Jepara', NULL),
-(21,  'kabupaten_demak',  'LeDNw5ULLEL10OHaOpWSJfAA', 'Kabupaten Demak',  NULL),
-(22,  'kabupaten_semarang', 'ztEt0lMLVOL8XMlaIom5xVAA', 'Kabupaten Semarang', NULL),
-(23,  'kabupaten_temanggung', 'zNjKJITTKEb1xGvyxnCKrIAA', 'Kabupaten Temanggung', NULL),
-(24,  'kabupaten_kendal', 'ryoSK78KP8ACxIDSNp8TpGAA', 'Kabupaten Kendal', NULL),
-(25,  'kabupaten_batang', 'LkS9NF/TMcPkwWHiKomCIPAA', 'Kabupaten Batang', NULL),
-(26,  'kabupaten_pekalongan', 'LHf90CnSsSTVzbDiynCqSEAA', 'Kabupaten Pekalongan', NULL),
-(27,  'kabupaten_pemalang', 'zfn9IpAKryACJRHyPtCinXAA', 'Kabupaten Pemalang', NULL),
-(28,  'kabupaten_tegal',  'zky9z/8K1dPC0R1zIo8bsOAA', 'Kabupaten Tegal',  NULL),
-(29,  'kabupaten_brebes', 'z5sSODvK1QpCUDHiizmrLEAA', 'Kabupaten Brebes', NULL),
+(1, 'kabupaten_cilacap',  'LwkyKF/S0QPVXEDiy/8zNCAA', 'Cilacap',  NULL),
+(2, 'kabupaten_banyumas', 'r0gy3CXLLcfEzWDSKoWSxTAA', 'Banyumas', NULL),
+(3, 'kabupaten_purbalingga',  'LviTJscSUObEWLvqhjCiPEAA', 'Purbalingga',  NULL),
+(4, 'kabupaten_banjarnegara', 'zFn8tIjLPcTC1GDqxn8jJDAA', 'Banjarnegara', NULL),
+(5, 'kabupaten_kebumen',  'zH3MNNTSydx1webLIoWstYAA', 'Kebumen',  NULL),
+(6, 'kabupaten_purworejo',  'z7cyJJ3SKcLCUfbbPhmjPRAA', 'Purworejo',  NULL),
+(7, 'kabupaten_wonosobo', 'roCiKzASMcx10IHiivC8uIAA', 'Wonosobo', NULL),
+(8, 'kabupaten_magelang', 'zYvdJgQSsSb1Ne1LIom9RWAA', 'Magelang', NULL),
+(9, 'kabupaten_boyolali', 'LL/T3yqKTOPCUdDyPp8bKQAA', 'Boyolali', NULL),
+(10,  'kabupaten_klaten', 'LkQDx1sK1QP1VdDyg3WiOBAA', 'Klaten', NULL),
+(11,  'kabupaten_sukoharjo',  'r8wNOzsSMELkwAvygzmasIAA', 'Sukoharjo',  NULL),
+(12,  'kabupaten_wonogiri', 'LoScKtKKNcbCwQbrhj8zMLAA', 'Wonogiri', NULL),
+(13,  'kabupaten_karanganyar',  'LRDNJ/wKzdfkUXdbgz8LtcAA', 'Karanganyar',  NULL),
+(14,  'kabupaten_sragen', 'LJvLIUHLVRP1Qc1zhzWKtMAA', 'Sragen', NULL),
+(15,  'kabupaten_grobogan', 'z5M8qwETURlCQcHah9CC2DAA', 'Grobogan', NULL),
+(16,  'kabupaten_blora',  'rML8McHTMEP1xAhKgzmDOWAA', 'Blora',  NULL),
+(17,  'kabupaten_rembang',  'zsQzuwST0Qp1QYvyh9W8IUAA', 'Rembang',  NULL),
+(18,  'kabupaten_pati', 'rKvqoUjLTRPVXKHSM1mc3HAA', 'Pati', NULL),
+(19,  'kabupaten_kudus',  'z5SSKM3L1QpCQYDqO1miPNAA', 'Kudus',  NULL),
+(20,  'kabupaten_jepara', 'zMzMK+0TSRP8TNbLOxmyMCAA', 'Jepara', NULL),
+(21,  'kabupaten_demak',  'LeDNw5ULLEL10OHaOpWSJfAA', 'Demak',  NULL),
+(22,  'kabupaten_semarang', 'ztEt0lMLVOL8XMlaIom5xVAA', 'Semarang', NULL),
+(23,  'kabupaten_temanggung', 'zNjKJITTKEb1xGvyxnCKrIAA', 'Temanggung', NULL),
+(24,  'kabupaten_kendal', 'ryoSK78KP8ACxIDSNp8TpGAA', 'Kendal', NULL),
+(25,  'kabupaten_batang', 'LkS9NF/TMcPkwWHiKomCIPAA', 'Batang', NULL),
+(26,  'kabupaten_pekalongan', 'LHf90CnSsSTVzbDiynCqSEAA', 'Pekalongan', NULL),
+(27,  'kabupaten_pemalang', 'zfn9IpAKryACJRHyPtCinXAA', 'Pemalang', NULL),
+(28,  'kabupaten_tegal',  'zky9z/8K1dPC0R1zIo8bsOAA', 'Tegal',  NULL),
+(29,  'kabupaten_brebes', 'z5sSODvK1QpCUDHiizmrLEAA', 'Brebes', NULL),
 (30,  'kota_magelang',  'zCj9OJLSK8AEzWDKOhWiucAA', 'Kota Magelang',  NULL),
 (31,  'kota_surakarta', 'zjQ9yHvTSRL8TNhSi9C8IbAA', 'Kota Surakarta', NULL),
 (32,  'kota_salatiga',  'rysNw04L3FbCRXHywnCqtGAA', 'Kota Salatiga',  NULL),
@@ -63,8 +63,6 @@ CREATE TABLE `admin_session` (
   PRIMARY KEY (`id_session`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `admin_session` (`id_session`, `username`, `session`, `session_key`, `created_at`, `expired_at`) VALUES
-(12,  'kota_tegal', '__Vhk0GiyDUJAk7JKsHieKC_gzdZBr2L', 'wY9Q_RiwHgkMFyjt_7-qYGCz89_SLvtx', '2017-08-19 19:20:20',  '2017-09-02 19:20:20');
 
 DROP TABLE IF EXISTS `pemohon`;
 CREATE TABLE `pemohon` (
@@ -88,4 +86,4 @@ CREATE TABLE `pemohon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- 2017-08-20 04:11:27
+-- 2017-08-20 05:50:50
