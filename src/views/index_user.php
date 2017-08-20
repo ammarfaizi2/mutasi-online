@@ -12,7 +12,7 @@
 <center>
 	<div class="cg">
 		<div>
-		 <button>Input Mutasi</button>
+		 <a href="?pg=input_mutasi"><button>Input Mutasi</button></a>
 		</div>
 	</div>
 </center>
