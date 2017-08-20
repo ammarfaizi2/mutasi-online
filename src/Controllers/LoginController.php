@@ -25,8 +25,9 @@ class LoginController
 					$sess = rstr(32);
 					$key  = rstr(32);
 					$expired = time()+(3600*24*14);
-					$st = DB::pdo()->prepare("INSERT INTO `admin_session` (`id_session`, `username`, `session`, `session_key`, `created_at`, `expired_at`) VALUES (null, :user, :sess, :sesskey, :cr, :ex);");
+					$st = DB::pdo()->prepare("INSERT INTO `admin_session` (`id_session`, `ur_wx`, `username`, `session`, `session_key`, `created_at`, `expired_at`) VALUES (null, :ur_wx, :user, :sess, :sesskey, :cr, :ex);");
 					$exe = $st->execute(array(
+							":ur_wx" => base64_encode(rstr(120)),
 							":user" => $user,
 							":sess" => $sess,
 							":sesskey" => $key,
@@ -37,7 +38,7 @@ class LoginController
 							setcookie("user_session", $sess, $expired);
 							setcookie("user", $user, $expired);
 							setcookie("sess_key", $key, $expired);
-							header("location:?login=ok");
+							header("location:?login=ok&ur=".uniqid(time())."&hash_lg=".sha1(time())."&handler=".urlencode(base64_encode(__CLASS__."::".__METHOD__))."&session=".urlencode(rstr(64)));
 							die(1);
 					} else {
 						var_dump($st->errorInfo());

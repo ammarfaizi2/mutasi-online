@@ -19,7 +19,7 @@ class InputMutasiController
 
 	public static function postAction()
 	{
-		/*if (empty($_POST['kirim_ke']) or empty($_POST['nopol']) or empty($_POST['nama_pemilik']) or empty($_POST['no_rangka']) or empty($_POST['no_mesin']) or empty($_POST['no_bpkb']) or empty($_POST['no_stnk']) or empty($_POST['no_hp']) or empty($_POST['submit']) or empty($_FILES['stnk']['tmp_name']) or empty($_FILES['notice_pajak']['tmp_name']) or empty($_FILES['ktp']['tmp_name']) or empty($_FILES['kwitansi_jual_beli']['tmp_name']) or empty($_FILES['cek_fisik']['tmp_name']) or empty($_FILES['bpkb']['tmp_name']) or empty($_FILES['bukti_pembayaran_pnbp_mutasi_keluar']['tmp_name'])) {
+		if (empty($_POST['kirim_ke']) or empty($_POST['nopol']) or empty($_POST['nama_pemilik']) or empty($_POST['no_rangka']) or empty($_POST['no_mesin']) or empty($_POST['no_bpkb']) or empty($_POST['no_stnk']) or empty($_POST['no_hp']) or empty($_POST['submit']) or empty($_FILES['stnk']['tmp_name']) or empty($_FILES['notice_pajak']['tmp_name']) or empty($_FILES['ktp']['tmp_name']) or empty($_FILES['kwitansi_jual_beli']['tmp_name']) or empty($_FILES['cek_fisik']['tmp_name']) or empty($_FILES['bpkb']['tmp_name']) or empty($_FILES['bukti_pembayaran_pnbp_mutasi_keluar']['tmp_name'])) {
 			?>
 			<!DOCTYPE html>
 			<html>
@@ -36,7 +36,7 @@ class InputMutasiController
 			</html>
 			<?php
 			die(1);
-		}*/
+		}
 		$st = DB::pdo()->prepare("SELECT COUNT(*) FROM `pemohon` WHERE `nopol`=:nopol LIMIT 1;");
 		$exe = $st->execute(array(
 				":nopol" => ($np = preg_replace("#[^A-Z0-9\s]#", "", strtoupper($_POST['nopol'])))
@@ -126,6 +126,7 @@ class InputMutasiController
 			<center>
 				<div>
 					<h2>Berhasil mengirim permohonan ke Polres <?php print $a[0]; ?></h2>
+					<h3>Nopol <?php print $np; ?></h3>
 				</div>
 			</center>
 			</body>
