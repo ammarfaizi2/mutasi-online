@@ -6,6 +6,15 @@ class InputMutasiController
 {
 	public static function run($user)
 	{
-		view("input_mutasi/_index");
+		if (isset($_POST['submit'])) {
+			self::postAction();
+		} else {
+			view("input_mutasi/_index");
+		}
+	}
+
+	public static function postAction()
+	{
+		
 	}
 }
