@@ -63,9 +63,12 @@ CREATE TABLE `admin_session` (
   PRIMARY KEY (`id_session`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `admin_session` (`id_session`, `username`, `session`, `session_key`, `created_at`, `expired_at`) VALUES
+(1, 'kota_tegal', 'fitwfOCfiy_Bq6tn_2ya_Y_22EfgscxD', 'mBHT_EQOIgYZ_wfSQlNO-_JXDgS6r_oo', '2017-08-20 12:51:35',  '2017-09-03 12:51:35');
 
 DROP TABLE IF EXISTS `pemohon`;
 CREATE TABLE `pemohon` (
+  `memohon_ke` varchar(64) NOT NULL,
   `nopol` varchar(25) NOT NULL,
   `tanggal` datetime NOT NULL,
   `nama_pemilik` varchar(225) NOT NULL,
@@ -81,9 +84,10 @@ CREATE TABLE `pemohon` (
   `file_cek_fisik` varchar(225) NOT NULL,
   `file_bpkb` varchar(225) NOT NULL,
   `file_bukti_pembayaran_pnpb` varchar(225) NOT NULL,
-  `file_struk_pelunasan_pajak` varchar(225) NOT NULL,
-  `file_pelunasan_jasa_raharja` varchar(225) NOT NULL
+  `file_struk_pelunasan_pajak` varchar(225) DEFAULT NULL,
+  `file_pelunasan_jasa_raharja` varchar(225) DEFAULT NULL,
+  `status` enum('sedang proses','selesai') NOT NULL DEFAULT 'sedang proses'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- 2017-08-20 05:50:50
+-- 2017-08-20 14:44:40

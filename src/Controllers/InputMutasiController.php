@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use PDO;
 use System\DB;
 use Handler\FileHandler as F;
 
@@ -36,8 +37,39 @@ class InputMutasiController
 			<?php
 			die(1);
 		}*/
+		$st = DB::pdo()->prepare("SELECT COUNT(*) FROM `pemohon` WHERE `nopol`=:nopol LIMIT 1;");
+		$exe = $st->execute(array(
+				":nopol" => ($np = preg_replace("#[^A-Z0-9\s]#", "", strtoupper($_POST['nopol'])))
+			));
+		if (!$exe) {
+			var_dump($st->errorInfo());
+			die(1);
+		}
+		$st = $st->fetch(PDO::FETCH_NUM);
+		if ($st[0] > 0) {
+			?>
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<title>Gagal</title>
+				<style type="text/css">
+					body {
+						font-family: Tahoma, Helvetica, Arial;
+					}
+				</style>
+			</head>
+			<body>
+			<center>
+				<h1>Gagal melakukan permohonan mutasi!</h1>
+				<h2>Nopol <?php print $np; ?> sedang dalam proses permohonan mutasi.</h2>
+			</center>
+			</body>
+			</html>
+			<?php
+			die(1);
+		}
 		$u = BASEPATH."/assets/users/";
-		$st = DB::pdo()->prepare("INSERT INTO `pemohon` (`memohon_ke`, `nopol`, `tanggal`, `nama_pemilik`, `no_rangka`, `no_mesin`, `no_bpkb`, `no_stnk`, `no_hp`, `file_stnk`, `file_notice_pajak`, `file_ktp`, `file_kwitansi_jual_beli`, `file_cek_fisik`, `file_bpkb`, `file_bukti_pembayaran_pnpb`, `file_struk_pelunasan_pajak`, `file_pelunasan_jasa_raharja`) VALUES (:mohon_ke, :nopol, :tanggal, :nama_pemilik, :no_rangka, :no_mesin, :no_bpkb, :no_stnk, :no_hp, :stnk, :notice_pajak, :ktp, :kwitansi_jual_beli, :cek_fisik, :bpkb, :bukti_pemb, :struk_pelunasan, :pelunasan_jr);");
+		$st = DB::pdo()->prepare("INSERT INTO `pemohon` (`memohon_ke`, `nopol`, `tanggal`, `nama_pemilik`, `no_rangka`, `no_mesin`, `no_bpkb`, `no_stnk`, `no_hp`, `file_stnk`, `file_notice_pajak`, `file_ktp`, `file_kwitansi_jual_beli`, `file_cek_fisik`, `file_bpkb`, `file_bukti_pembayaran_pnpb`, `file_struk_pelunasan_pajak`, `file_pelunasan_jasa_raharja`,`status`) VALUES (:mohon_ke, :nopol, :tanggal, :nama_pemilik, :no_rangka, :no_mesin, :no_bpkb, :no_stnk, :no_hp, :stnk, :notice_pajak, :ktp, :kwitansi_jual_beli, :cek_fisik, :bpkb, :bukti_pemb, :struk_pelunasan, :pelunasan_jr, 'sedang proses');");
 		$a = function($a)
 		{
 			$a = explode("/", $a);
@@ -45,7 +77,7 @@ class InputMutasiController
 		};
 		$exe = $st->execute(array(
 				":mohon_ke" => $_POST['kirim_ke'],
-				":nopol" => ($np = str_replace(" ", "",preg_replace("[^A-Z0-9\s]", "", strtoupper($_POST['nopol'])))),
+				":nopol" => $np,
 				":tanggal" => (date("Y-m-d H:i:s")),
 				":nama_pemilik" => $_POST['nama_pemilik'],
 				":no_rangka" => $_POST['no_rangka'],
@@ -66,6 +98,39 @@ class InputMutasiController
 		if (!$exe) {
 			var_dump($st->errorInfo());
 			die(1);
+		} else {
+			$st = DB::pdo()->prepare("SELECT `nama_polres` FROM `admin` WHERE `username`=:user LIMIT 1;");
+			$exe = $st->execute(array(
+					":user" => strtolower($_POST['kirim_ke'])
+				));
+			if (!$exe) {
+				var_dump($st->errorInfo());
+				die(1);
+			} 
+			if (!($a = $st->fetch(PDO::FETCH_NUM))){
+				echo "Database bermasalah atau input telah dimanipulasi !";
+				die(1);
+			}
+			?>
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<title>Sukses</title>
+				<style type="text/css">
+					body {
+						font-family: Tahoma, Helvetica, Arial;
+					}
+				</style>
+			</head>
+			<body>
+			<center>
+				<div>
+					<h2>Berhasil mengirim permohonan ke Polres <?php print $a[0]; ?></h2>
+				</div>
+			</center>
+			</body>
+			</html>
+			<?php
 		}
 	}
 }
