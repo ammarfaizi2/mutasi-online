@@ -15,6 +15,10 @@ if (!$exe) {
 <html>
 <head>
 <title>Input Mutasi</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+<script type="text/javascript" src="assets/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	(function(){
 		console.log(JSON.stringify({"aaa":123}));
@@ -68,10 +72,6 @@ if (!$exe) {
 		ck_file('struk_pelunasan_jr_pv','bt_struk_pelunasan_jr','struk_pelunasan_jr_file');
 	}
 </script>
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-<script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap.min.js" ></script>
 <style type="text/css">
 	body {
 		font-family: Tahoma, Arial;
@@ -80,6 +80,7 @@ if (!$exe) {
 	.fcg{
 		margin-top:3%;
 		margin-bottom: 10%;
+		border-radius: 2%;
 	}
 	.ia{
 		width:30%;
@@ -135,6 +136,9 @@ if (!$exe) {
 		border: 4px solid #CECECE;
 		border-radius: 30px;
 	}
+	.gt {
+		border: 5px solid black;
+	}
 </style>
 </head>
 <body>
@@ -144,9 +148,9 @@ if (!$exe) {
 	</div>
 	<div class="fcg">
 		<form method="post" action="?pg=input_mutasi&post=ok" enctype="multipart/form-data" class="table-responsive">
-			<table class="table table-striped table-bordered table-hover table-condensed pwdtable">
+			<table class="table table-striped table-bordered table-hover table-condensed pwdtable gt">
 				<thead>
-					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Input Mutasi</h3></center></th></tr>
+					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Input Permohonan Mutasi</h3></center></th></tr>
 				</thead>
 				<tbody>
 					<tr>
