@@ -44,6 +44,8 @@
 		ck_file('stnk_pv','bt_stnk','stnk_file');
 		ck_file('notice_pajak_pv','bt_notice_pajak','notice_pajak_file');
 		ck_file('ktp_pv','bt_ktp','ktp_file');
+		ck_file('kwitansi_jual_beli_pv','bt_kwitansi_jual_beli','kwitansi_jual_beli_file');
+		ck_file('cek_fisik_pv','bt_cek_fisik','cek_fisik_file');
 	}
 </script>
 <style type="text/css">
@@ -54,7 +56,7 @@
 		margin-top:3%;
 	}
 	table {
-		border: 2px solid black;
+		border: 4px solid black;
 		padding: 3px 3px 3px 3px;
 		background-color: #7EF1BB;
 		border-collapse: collapse;
@@ -77,16 +79,19 @@
 		width: 30px;
 		height: 30px;
 	}
-	th, td {
+	th ,td {
 		background-color: #fff;
     	border: 2px solid black;
 	}
 	tr {
 		background-color: #fff;
+		border: 4px solid black;
 	}
 	#sbid {
 		background-color: #57E66A;
 		padding: 5px 10px 5px 10px;
+		border: 3px solid black;
+		cursor: pointer;
 	}
 </style>
 </head>
@@ -154,16 +159,20 @@
 						<td align="center"><button id="bt_bukti_pembayaran_pnbp_mutasi_keluar" type="button" disabled>Hapus</button></td>
 					</tr>
 					<tr>
-						<td>* Struk Pelunasan Pajak</td>
-						<td><input type="file" size="10" name="struk_pelunasan_pajak" onchange="pw(this,'struk_pelunasan_pajak_pv','bt_struk_pelunasan_pajak','struk_pelunasan_pajak_file');" id="struk_pelunasan_pajak_file" required></td>
+						<td>&nbsp;Struk Pelunasan Pajak</td>
+						<td><input type="file" size="10" name="struk_pelunasan_pajak" onchange="pw(this,'struk_pelunasan_pajak_pv','bt_struk_pelunasan_pajak','struk_pelunasan_pajak_file');" id="struk_pelunasan_pajak_file"></td>
 						<td align="center"><img style="margin-top:10%;border:1px solid black;" src="" class="pvw" id="struk_pelunasan_pajak_pv"></td>
 						<td align="center"><button id="bt_struk_pelunasan_pajak" type="button" disabled>Hapus</button></td>
 					</tr>
 					<tr>
-						<td>* Struk Pelunasan Jasa Raharja</td>
-						<td><input type="file" size="10" name="struk_pelunasan_jr" onchange="pw(this,'struk_pelunasan_jr_pv','bt_struk_pelunasan_jr','struk_pelunasan_jr_file');" id="struk_pelunasan_jr_file" required></td>
+						<td>&nbsp;Struk Pelunasan Jasa Raharja</td>
+						<td><input type="file" size="10" name="struk_pelunasan_jr" onchange="pw(this,'struk_pelunasan_jr_pv','bt_struk_pelunasan_jr','struk_pelunasan_jr_file');" id="struk_pelunasan_jr_file"></td>
 						<td align="center"><img style="margin-top:10%;border:1px solid black;" src="" class="pvw" id="struk_pelunasan_jr_pv"></td>
 						<td align="center"><button id="bt_struk_pelunasan_jr" type="button" disabled>Hapus</button></td>
+					</tr>
+					<tr>
+						<td>Kirim ke :</td>
+						<td colspan="3"></td>
 					</tr>
 				</tbody>
 				<tfoot>
