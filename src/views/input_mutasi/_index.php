@@ -3,9 +3,6 @@
 <head>
 <title>Input Mutasi</title>
 <script type="text/javascript">
-	(function(){
-		console.log(JSON.stringify({"aaa":123}));
-	})();
 	function pw(gambar,idpreview, bt, fb){
         var gb = gambar.files;
         var bt = document.getElementById(bt);
@@ -87,6 +84,10 @@
 	tr {
 		background-color: #fff;
 	}
+	#sbid {
+		background-color: #57E66A;
+		padding: 5px 10px 5px 10px;
+	}
 </style>
 </head>
 <body>
@@ -147,18 +148,28 @@
 						<td align="center"><button id="bt_bpkb" type="button" disabled>Hapus</button></td>
 					</tr>
 					<tr>
-						<td style="width: 47%;">* Bukti Pembayaran PNPB Mutasi Keluar</td>
+						<td style="width: 43%;">* Bukti Pembayaran PNPB Mutasi Keluar</td>
 						<td><input type="file" name="bukti_pembayaran_pnbp_mutasi_keluar" onchange="pw(this,'bukti_pembayaran_pnbp_mutasi_keluar_pv','bt_bukti_pembayaran_pnbp_mutasi_keluar','bukti_pembayaran_pnbp_mutasi_keluar_file');" id="bukti_pembayaran_pnbp_mutasi_keluar_file" required></td>
 						<td align="center"><img style="margin-top:10%;border:1px solid black;" src="" class="pvw" id="bukti_pembayaran_pnbp_mutasi_keluar_pv"></td>
 						<td align="center"><button id="bt_bukti_pembayaran_pnbp_mutasi_keluar" type="button" disabled>Hapus</button></td>
 					</tr>
-					<tr><td>Struk Pelunasan Pajak</td><td><input type="file" name="struk_pelunasan_pajak"></td></tr>
-					<tr><td>Struck Pelunasan Jasa Raharja</td><td><input type="file" name="struk_pelunasan_jasa_raharja"></td></tr>
+					<tr>
+						<td>* Struk Pelunasan Pajak</td>
+						<td><input type="file" size="10" name="struk_pelunasan_pajak" onchange="pw(this,'struk_pelunasan_pajak_pv','bt_struk_pelunasan_pajak','struk_pelunasan_pajak_file');" id="struk_pelunasan_pajak_file" required></td>
+						<td align="center"><img style="margin-top:10%;border:1px solid black;" src="" class="pvw" id="struk_pelunasan_pajak_pv"></td>
+						<td align="center"><button id="bt_struk_pelunasan_pajak" type="button" disabled>Hapus</button></td>
+					</tr>
+					<tr>
+						<td>* Struk Pelunasan Jasa Raharja</td>
+						<td><input type="file" size="10" name="struk_pelunasan_jr" onchange="pw(this,'struk_pelunasan_jr_pv','bt_struk_pelunasan_jr','struk_pelunasan_jr_file');" id="struk_pelunasan_jr_file" required></td>
+						<td align="center"><img style="margin-top:10%;border:1px solid black;" src="" class="pvw" id="struk_pelunasan_jr_pv"></td>
+						<td align="center"><button id="bt_struk_pelunasan_jr" type="button" disabled>Hapus</button></td>
+					</tr>
 				</tbody>
 				<tfoot>
-					<tr><td align="center" colspan="2">
+					<tr><td align="center" colspan="4">
 						<div class="sb">
-						<input type="submit" name="submit" value="Submit">
+						<input id="sbid" type="submit" name="submit" value="Submit">
 						</div>
 					</td></tr>
 				</tfoot>
