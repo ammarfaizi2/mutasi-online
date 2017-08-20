@@ -1,0 +1,6 @@
+ck_file('kwitansi_jual_beli_pv','bt_kwitansi_jual_beli','kwitansi_jual_beli_file');
+ck_file('cek_fisik_pv','bt_cek_fisik','cek_fisik_file');
+ck_file('bpkb_pv','bt_bpkb','bpkb_file');
+ck_file('bukti_pembayaran_pnbp_mutasi_keluar_pv','bt_bukti_pembayaran_pnbp_mutasi_keluar','bukti_pembayaran_pnbp_mutasi_keluar_file');
+ck_file('struk_pelunasan_pajak_pv','bt_struk_pelunasan_pajak','struk_pelunasan_pajak_file');
+ck_file('struk_pelunasan_jr_pv','bt_struk_pelunasan_jr','struk_pelunasan_jr_file');
