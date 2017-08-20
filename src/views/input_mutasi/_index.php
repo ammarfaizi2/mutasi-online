@@ -152,7 +152,7 @@ if (!$exe) {
 					<tr>
 					<td>&nbsp;&nbsp;* Kirim ke </td>
 					<td colspan="3">
-						<select name="kirim_ke" required>
+						<select name="kirim_ke" req>
 						<option></option>
 						<?php
 						foreach ($st as $val) {
@@ -161,19 +161,19 @@ if (!$exe) {
 						?>
 						</select></td>
 					</tr>
-					<tr><td class="ia rk active">* Nopol</td><td colspan="3" class="warning"><input type="text" size="50" placeholder="Nopol" name="nopol" class="form-control" required></td></tr>
-					<tr><td class="ia rk active">* Nama Pemilik</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="Nama Pemilik" name="nama_pemilik" class="form-control" required></td></tr>
-					<tr><td class="ia rk active">* No Rangka</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No Rangka" name="no_rangka" class="form-control" required></td></tr>
-					<tr><td class="ia rk active">* No Mesin</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No Mesin" name="no_mesin" class="form-control" required></td></tr>
-					<tr><td class="ia rk active">* No BPKB</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No BPKB" name="no_bpkb" class="form-control" required></td></tr>
-					<tr><td class="ia rk active">* No STNK</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No STNK" name="no_stnk" class="form-control" required></td></tr>
-					<tr><td class="ia rk active">* No HP</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No HP" name="no_hp" class="form-control" required></td></tr>
+					<tr><td class="ia rk active">* Nopol</td><td colspan="3" class="warning"><input type="text" size="50" placeholder="Nopol" name="nopol" class="form-control" req></td></tr>
+					<tr><td class="ia rk active">* Nama Pemilik</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="Nama Pemilik" name="nama_pemilik" class="form-control" req></td></tr>
+					<tr><td class="ia rk active">* No Rangka</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No Rangka" name="no_rangka" class="form-control" req></td></tr>
+					<tr><td class="ia rk active">* No Mesin</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No Mesin" name="no_mesin" class="form-control" req></td></tr>
+					<tr><td class="ia rk active">* No BPKB</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No BPKB" name="no_bpkb" class="form-control" req></td></tr>
+					<tr><td class="ia rk active">* No STNK</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No STNK" name="no_stnk" class="form-control" req></td></tr>
+					<tr><td class="ia rk active">* No HP</td><td colspan="3" class="warning"><input size="50" type="text" placeholder="No HP" name="no_hp" class="form-control" req></td></tr>
 				</tbody>
 				<tbody>
 					<tr>
 						<td class="rk active">* STNK</td>
 						<td class="warning">
-								<input type="file" size="10" name="stnk" onchange="pw(this,'stnk_pv','bt_stnk','stnk_file');" id="stnk_file" class="btn-warning form-control" required>
+								<input type="file" size="10" name="stnk" onchange="pw(this,'stnk_pv','bt_stnk','stnk_file');" id="stnk_file" class="btn-warning form-control" req>
 						</td>
 						<td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="stnk_pv"></td>
 						<td align="center" class="warning"><button id="bt_stnk" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -182,7 +182,7 @@ if (!$exe) {
 					<tr>
                         <td class="rk active">* Notice Pajak</td>
                         <td class="warning">
-                                <input type="file" size="10" name="notice_pajak" onchange="pw(this,'notice_pajak_pv','bt_notice_pajak','notice_pajak_file');" id="notice_pajak_file" class="btn-warning form-control" required>
+                                <input type="file" size="10" name="notice_pajak" onchange="pw(this,'notice_pajak_pv','bt_notice_pajak','notice_pajak_file');" id="notice_pajak_file" class="btn-warning form-control" req>
 
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="notice_pajak_pv"></td>
@@ -192,7 +192,7 @@ if (!$exe) {
                     <tr>
                         <td class="rk active">* KTP</td>
                         <td class="warning">
-                                <input type="file" size="10" name="ktp" onchange="pw(this,'ktp_pv','bt_ktp','ktp_file');" id="ktp_file" class="btn-warning form-control" required>
+                                <input type="file" size="10" name="ktp" onchange="pw(this,'ktp_pv','bt_ktp','ktp_file');" id="ktp_file" class="btn-warning form-control" req>
 
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="ktp_pv"></td>
@@ -202,7 +202,7 @@ if (!$exe) {
                     <tr>
                         <td class="rk active">* Kwitansi Jual Beli</td>
                         <td class="warning">
-                                <input type="file" size="10" name="kwitansi_jual_beli" onchange="pw(this,'kwitansi_jual_beli_pv','bt_kwitansi_jual_beli','kwitansi_jual_beli_file');" id="kwitansi_jual_beli_file" class="btn-warning form-control" required>
+                                <input type="file" size="10" name="kwitansi_jual_beli" onchange="pw(this,'kwitansi_jual_beli_pv','bt_kwitansi_jual_beli','kwitansi_jual_beli_file');" id="kwitansi_jual_beli_file" class="btn-warning form-control" req>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="kwitansi_jual_beli_pv"></td>
                         <td align="center" class="warning"><button id="bt_kwitansi_jual_beli" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -211,7 +211,7 @@ if (!$exe) {
                     <tr>
                         <td class="rk active">* Cek Fisik</td>
                         <td class="warning">
-                                <input type="file" size="10" name="cek_fisik" onchange="pw(this,'cek_fisik_pv','bt_cek_fisik','cek_fisik_file');" id="cek_fisik_file" class="btn-warning form-control" required>
+                                <input type="file" size="10" name="cek_fisik" onchange="pw(this,'cek_fisik_pv','bt_cek_fisik','cek_fisik_file');" id="cek_fisik_file" class="btn-warning form-control" req>
 
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="cek_fisik_pv"></td>
@@ -221,7 +221,7 @@ if (!$exe) {
                     <tr>
                         <td class="rk active">* BPKB</td>
                         <td class="warning">
-                                <input type="file" size="10" name="bpkb" onchange="pw(this,'bpkb_pv','bt_bpkb','bpkb_file');" id="bpkb_file" class="btn-warning form-control" required>
+                                <input type="file" size="10" name="bpkb" onchange="pw(this,'bpkb_pv','bt_bpkb','bpkb_file');" id="bpkb_file" class="btn-warning form-control" req>
 
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="bpkb_pv"></td>
@@ -231,7 +231,7 @@ if (!$exe) {
                     <tr>
                         <td class="rk active">* Bukti Pembayaran PNBP Mutasi Keluar</td>
                         <td class="warning">
-                                <input type="file" size="10" name="bukti_pembayaran_pnbp_mutasi_keluar" onchange="pw(this,'bukti_pembayaran_pnbp_mutasi_keluar_pv','bt_bukti_pembayaran_pnbp_mutasi_keluar','bukti_pembayaran_pnbp_mutasi_keluar_file');" id="bukti_pembayaran_pnbp_mutasi_keluar_file" class="btn-warning form-control" required>
+                                <input type="file" size="10" name="bukti_pembayaran_pnbp_mutasi_keluar" onchange="pw(this,'bukti_pembayaran_pnbp_mutasi_keluar_pv','bt_bukti_pembayaran_pnbp_mutasi_keluar','bukti_pembayaran_pnbp_mutasi_keluar_file');" id="bukti_pembayaran_pnbp_mutasi_keluar_file" class="btn-warning form-control" req>
 
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="bukti_pembayaran_pnbp_mutasi_keluar_pv"></td>
