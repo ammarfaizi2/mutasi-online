@@ -71,13 +71,14 @@ class InputMutasiController
             die(1);
         }
         $u = BASEPATH."/assets/users/";
-        $st = DB::pdo()->prepare("INSERT INTO `pemohon` (`memohon_ke`, `nopol`, `tanggal`, `nama_pemilik`, `no_rangka`, `no_mesin`, `no_bpkb`, `no_stnk`, `no_hp`, `file_stnk`, `file_notice_pajak`, `file_ktp`, `file_kwitansi_jual_beli`, `file_cek_fisik`, `file_bpkb`, `file_bukti_pembayaran_pnpb`, `file_struk_pelunasan_pajak`, `file_pelunasan_jasa_raharja`,`status`) VALUES (:mohon_ke, :nopol, :tanggal, :nama_pemilik, :no_rangka, :no_mesin, :no_bpkb, :no_stnk, :no_hp, :stnk, :notice_pajak, :ktp, :kwitansi_jual_beli, :cek_fisik, :bpkb, :bukti_pemb, :struk_pelunasan, :pelunasan_jr, 'sedang proses');");
+        $st = DB::pdo()->prepare("INSERT INTO `pemohon` (`pemohon`,`memohon_ke`, `nopol`, `tanggal`, `nama_pemilik`, `no_rangka`, `no_mesin`, `no_bpkb`, `no_stnk`, `no_hp`, `file_stnk`, `file_notice_pajak`, `file_ktp`, `file_kwitansi_jual_beli`, `file_cek_fisik`, `file_bpkb`, `file_bukti_pembayaran_pnpb`, `file_struk_pelunasan_pajak`, `file_pelunasan_jasa_raharja`,`status`) VALUES (:pemohon,:mohon_ke, :nopol, :tanggal, :nama_pemilik, :no_rangka, :no_mesin, :no_bpkb, :no_stnk, :no_hp, :stnk, :notice_pajak, :ktp, :kwitansi_jual_beli, :cek_fisik, :bpkb, :bukti_pemb, :struk_pelunasan, :pelunasan_jr, 'sedang proses');");
         $a = function ($a) {
             $a = explode("/", $a);
             return end($a);
         };
         $exe = $st->execute(
             array(
+                ":pemohon" => strtolower($_COOKIE['user']),
                 ":mohon_ke" => $_POST['kirim_ke'],
                 ":nopol" => $np,
                 ":tanggal" => (date("Y-m-d H:i:s")),

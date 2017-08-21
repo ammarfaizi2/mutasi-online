@@ -6,6 +6,7 @@ use PDO;
 use System\DB;
 use Models\User;
 use Controllers\InputMutasiController;
+use Controllers\PermohonanMasukController;
 
 class App
 {
@@ -17,10 +18,11 @@ class App
             case 'input_mutasi':
                     InputMutasiController::run($user);
                 break;
-            case 'permohonan_masuk':
-                    echo "Belum dibuat";
+            case 'permohonan_masuk':           
+                    PermohonanMasukController::run($user);
                 break;
-            case 'cek_permohonan_keluar':
+            case 'permohonan_keluar':
+                    http_response_code(503);
                     echo "Belum dibuat";
                 break;
             case 'logout':
@@ -37,9 +39,14 @@ class App
                     setcookie("user", null, null);
                     setcookie("user_session", null, null);
                     setcookie("sess_key", null, null);
-                    header("location:?ref=logout");
+                    header("location:?ref=logout&r_cm=".rstr(72));
                 die(1);
                     break;
+            default:
+                http_response_code(404);
+                echo "Not Found !";
+                die(1);
+                break;
             }
         } else {
             view("index_user");
