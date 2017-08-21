@@ -1,14 +1,17 @@
 <?php
 use System\DB;
+
 $st = DB::pdo()->prepare("SELECT `username`,`nama_polres` FROM `admin` WHERE `username`!=:user  ORDER BY `nama_polres` LIMIT 35;");
-$exe = $st->execute(array(
-		":user" => strtolower($_COOKIE['user'])
-	));
+$exe = $st->execute(
+    array(
+        ":user" => strtolower($_COOKIE['user'])
+    )
+);
 if (!$exe) {
-	var_dump($st->errorInfo());
-	die(1);
+    var_dump($st->errorInfo());
+    die(1);
 } else {
-	$st = $st->fetchAll(\PDO::FETCH_ASSOC);
+    $st = $st->fetchAll(\PDO::FETCH_ASSOC);
 }
 ?>
 <!DOCTYPE html>
@@ -158,11 +161,12 @@ if (!$exe) {
 					<td colspan="3">
 						<select name="kirim_ke" req>
 						<option></option>
-						<?php
-						foreach ($st as $val) {
-							?><option value="<?php print $val['username']; ?>"><?php print $val['nama_polres']; ?></option><?php
-						}
-						?>
+        <?php
+        foreach ($st as $val) {
+            ?><option value="<?php print $val['username']; ?>"><?php print $val['nama_polres']; ?></option><?php
+
+        }
+                        ?>
 						</select></td>
 					</tr>
 					<tr><td class="ia rk active">* Nopol</td><td colspan="3" class="warning"><input type="text" size="50" placeholder="Nopol" name="nopol" class="form-control" req></td></tr>

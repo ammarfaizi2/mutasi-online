@@ -28,7 +28,7 @@
 <body>
 <?php
 if (isset($_FILES['wq'])) {
- var_dump($_FILES);
+    var_dump($_FILES);
 }
 ?>
 <form id="myForm" action="" method="post" enctype="multipart/form-data">

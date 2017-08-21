@@ -256,15 +256,15 @@ $st = DB::pdo()->prepare("INSERT INTO `admin` (`id`,`username`,`password`,`nama_
 $a = explode("\n", $pure);
 $data = array();
 foreach ($a as $val) {
-	if (strlen($val) > 5 and (strpos($val, "Kabupaten")!==false || strpos($val, "Kota")!== false)) {
-		$data[] = trim($val);
-		$st->execute(array(
-				":user" => strtolower(str_replace(" ", "_", $val)),
-				":pass" => T::encrypt("polres12345", "polres"),
-				":nama" => $val
-			));
-	}
+    if (strlen($val) > 5 and (strpos($val, "Kabupaten")!==false || strpos($val, "Kota")!== false)) {
+        $data[] = trim($val);
+        $st->execute(
+            array(
+                ":user" => strtolower(str_replace(" ", "_", $val)),
+                ":pass" => T::encrypt("polres12345", "polres"),
+                ":nama" => $val
+            )
+        );
+    }
 }
 var_dump($data);
-
-
