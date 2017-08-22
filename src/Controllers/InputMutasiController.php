@@ -4,6 +4,7 @@ namespace Controllers;
 
 use PDO;
 use System\DB;
+use Handler\PCLZip;
 use Handler\FileHandler as F;
 
 class InputMutasiController
@@ -37,7 +38,7 @@ class InputMutasiController
     <?php
             die(1);
         }
-        $st = DB::pdo()->prepare("SELECT COUNT(*) FROM `pemohon` WHERE `nopol`=:nopol LIMIT 1;");
+        $st = DB::pdo()->prepare("SELECT COUNT(*) FROM `pemohon` WHERE `nopol`=:nopol AND `status`='sedang proses' LIMIT 1;");
         $exe = $st->execute(
             array(
                 ":nopol" => ($np = preg_replace("#[^A-Z0-9\s]#", "", strtoupper($_POST['nopol'])))
@@ -53,6 +54,10 @@ class InputMutasiController
 			<!DOCTYPE html>
 			<html>
 			<head>
+                <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+                <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+                <script type="text/javascript" src="assets/js/bootstrap.min.js" ></script>
+                <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
 				<title>Gagal</title>
 				<style type="text/css">
 					body {
@@ -62,6 +67,9 @@ class InputMutasiController
 			</head>
 			<body>
 			<center>
+                <div>
+                    <a href="?"><button class="btn-lg btn-primary" style="margin-top:1em;"><i class="fa fa-fw fa-chevron-left"></i> Kembali</button></a>
+                </div>
 				<h1>Gagal melakukan permohonan mutasi!</h1>
 				<h2>Nopol <?php print $np; ?> sedang dalam proses permohonan mutasi.</h2>
 			</center>
@@ -76,6 +84,7 @@ class InputMutasiController
             $a = explode("/", $a);
             return end($a);
         };
+        $handler = time();
         $exe = $st->execute(
             array(
                 ":pemohon" => strtolower($_COOKIE['user']),
@@ -88,21 +97,29 @@ class InputMutasiController
                 ":no_bpkb" => $_POST['no_bpkb'],
                 ":no_stnk" => $_POST['no_stnk'],
                 ":no_hp" => $_POST['no_hp'],
-                ":stnk" => $a(F::gf("stnk", $u."stnk_".$np.".jpg")),
-                ":notice_pajak" => $a(F::gf("notice_pajak", $u."notice_pajak_".$np.".jpg")),
-                ":ktp" => $a(F::gf("ktp", $u."ktp_".$np.".jpg")),
-                ":kwitansi_jual_beli" => $a(F::gf("kwitansi_jual_beli", $u."kwitansi_jual_beli_".$np.".jpg")),
-                ":cek_fisik" => $a(F::gf("cek_fisik", $u."cek_fisik_".$np.".jpg")),
-                ":bpkb" => $a(F::gf("bpkb", $u."bpkb_".$np.".jpg")),
-                ":bukti_pemb" =>  $a(F::gf("bukti_pembayaran_pnbp_mutasi_keluar", $u."bukti_pembayaran_pnbp_mutasi_keluar_".$np.".jpg")),
-                ":struk_pelunasan" => $a(F::gf("struk_pelunasan_pajak", $u."struk_pelunasan_pajak_".$np.".jpg")),
-                ":pelunasan_jr" => $a(F::gf("struk_pelunasan_jr", $u."struk_pelunasan_jr_".$np.".jpg")),
+                ":stnk" => $a(F::gf("stnk", $u."stnk_".$np.".jpg", $handler)),
+                ":notice_pajak" => $a(F::gf("notice_pajak", $u."notice_pajak_".$np.".jpg", $handler)),
+                ":ktp" => $a(F::gf("ktp", $u."ktp_".$np.".jpg", $handler)),
+                ":kwitansi_jual_beli" => $a(F::gf("kwitansi_jual_beli", $u."kwitansi_jual_beli_".$np.".jpg", $handler)),
+                ":cek_fisik" => $a(F::gf("cek_fisik", $u."cek_fisik_".$np.".jpg", $handler)),
+                ":bpkb" => $a(F::gf("bpkb", $u."bpkb_".$np.".jpg", $handler)),
+                ":bukti_pemb" =>  $a(F::gf("bukti_pembayaran_pnbp_mutasi_keluar", $u."bukti_pembayaran_pnbp_mutasi_keluar_".$np.".jpg", $handler)),
+                ":struk_pelunasan" => $a(F::gf("struk_pelunasan_pajak", $u."struk_pelunasan_pajak_".$np.".jpg", $handler)),
+                ":pelunasan_jr" => $a(F::gf("struk_pelunasan_jr", $u."struk_pelunasan_jr_".$np.".jpg", $handler)),
             )
         );
         if (!$exe) {
             var_dump($st->errorInfo());
             die(1);
         } else {
+            $archive = new PCLZip(ASSETS_DIR."/zip/{$np}.zip");
+            $v_list = $archive->create(ASSETS_DIR."/_tmp_data/{$handler}", PCLZIP_OPT_REMOVE_PATH, realpath(ASSETS_DIR."/_tmp_data/{$handler}"));
+            $a = scandir(ASSETS_DIR."/_tmp_data/{$handler}");
+            unset($a[0], $a[1]);
+            foreach ($a as $val) {
+                unlink(ASSETS_DIR."/_tmp_data/{$handler}/".$val);
+            }
+            rmdir(ASSETS_DIR."/_tmp_data/{$handler}");
             $st = DB::pdo()->prepare("SELECT `nama_polres` FROM `admin` WHERE `username`=:user LIMIT 1;");
             $exe = $st->execute(
                 array(
@@ -126,9 +143,16 @@ class InputMutasiController
 						font-family: Tahoma, Helvetica, Arial;
 					}
 				</style>
+                <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+                <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+                <script type="text/javascript" src="assets/js/bootstrap.min.js" ></script>
+                <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
 			</head>
 			<body>
 			<center>
+                <div>
+                    <a href="?"><button class="btn-lg btn-primary" style="margin-top:1em;"><i class="fa fa-fw fa-chevron-left"></i> Kembali</button></a>
+                </div>
 				<div>
 					<h2>Berhasil mengirim permohonan ke Polres <?php print $a[0]; ?></h2>
 					<h3>Nopol <?php print $np; ?></h3>

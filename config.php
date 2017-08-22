@@ -13,3 +13,5 @@ define("DBNAME", "mutasi");
 define("DBUSER", "root");
 define("DBPASS", "");
 define("DBNAME", "mutasi");*/
+
+define("ASSETS_DIR", __DIR__."/assets");

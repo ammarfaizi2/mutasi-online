@@ -5,6 +5,7 @@ namespace Handler;
 use PDO;
 use System\DB;
 use Models\User;
+use Controllers\DownloadController;
 use Controllers\InputMutasiController;
 use Controllers\PermohonanMasukController;
 
@@ -42,6 +43,9 @@ class App
                     header("location:?ref=logout&r_cm=".rstr(72));
                 die(1);
                     break;
+            case 'download':
+                    DownloadController::run();
+                break;
             default:
                 http_response_code(404);
                 echo "Not Found !";
