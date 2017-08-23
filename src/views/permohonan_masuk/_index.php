@@ -26,18 +26,44 @@ use Models\DaftarPermohonan;
 <div style="margin-top: 1%;margin-bottom: 2%;">
 	<a href="?"><button class="btn-lg btn-primary" style="margin-top:1em;">Kembali</button></a>
 </div>
+<div style="margin-bottom:2%;">
+	<h2>Daftar Permohonan Mutasi Masuk</h2>
+</div>
 <?php
-if ($permohonan = DaftarPermohonan::getData($user)) {
+$count = DaftarPermohonan::countData($user);
+if (isset($_GET['page'])) {
+	$w = (int) $_GET['page'];
+	$pg = $w;
+	if ($w > 1) {
+		$offset = ($w * 10) - 1;
+	} else {
+		$offset = 0;
+	}
+} else {
+	$pg = 0;
+	$offset = 0;
+}
+if ($permohonan = DaftarPermohonan::getData($user, $offset)) {
 	?>
+	<div style="margin-bottom:2%;">
+		<button>Sebelumnya</button>
+		<?php
+		if ($offset+10 < $count) {
+			?>
+			<a href="?pg=permohonan_masuk&page=<?php print $pg+1; ?>"><button>Selanjutnya</button></a>
+			<?php
+		}
+		?>
+	</div>
 	<table class="table-bordered table-hover table table-striped table-bordered table-hover table-condensed pwdtabletbd">
 		<thead>
 			<tr class="active"><th><center>No.</center></th><th><center>Tanggal</center></th><th style="padding-left: 5px;padding-right: 5px;"><center>Polres Pemohon</center></th><th><center>Nopol</center></th><th><center>Nama Pemilik</center></th><th><center>No Rangka</center></th><th><center>No Mesin</center></th><th><center>No BPKB</center></th><th><center>Status</center></th><th><center>Berkas</center></th></tr>
-			<?php $num = 1 xor $a = "assets/users/";
+			<?php $num = $offset+1 xor $a = "assets/users/";
 			foreach ($permohonan as $val) {
 				?>
 			<tr>
 				<td width="8" align="center"><?php print $num++; ?></td>
-				<td width="110" align="center"><?php print date("d F Y", strtotime($val['tanggal'])); ?></td>
+				<td width="110" align="center"><?php print date("d F Y h:i:s A", strtotime($val['tanggal'])); ?></td>
 				<td align="center"><?php print $val['pemohon']; ?></td>
 				<td align="center"><?php print $val['nopol']; ?></td>
 				<td align="center"><?php print $val['nama_pemilik']; ?></td>

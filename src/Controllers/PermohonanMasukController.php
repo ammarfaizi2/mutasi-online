@@ -14,6 +14,6 @@ class PermohonanMasukController
 
 	private static function show_table($user)
 	{
-		view("permohonan_masuk/_index", array("user" => $user));
+		view("permohonan_masuk/_index_pg", array("user" => $user));
 	}
 }
