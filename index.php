@@ -7,6 +7,8 @@ try {
         var_dump($e->getMessage());
         die(1);
     } catch (\Error $e) {
+        header("Content-type:text/plain");
+        var_dump($e);
         var_dump($e->getMessage());
         die(1);
     } catch (\ErrorException $e) {
