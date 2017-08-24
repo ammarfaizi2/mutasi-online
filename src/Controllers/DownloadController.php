@@ -31,7 +31,6 @@ class DownloadController
 
 	private static function dw_func()
 	{
-		/*function to set your files*/
 		function output_file($file, $name, $mime_type='')
 		{
 		    if(!is_readable($file)) die('File not found or inaccessible!');
