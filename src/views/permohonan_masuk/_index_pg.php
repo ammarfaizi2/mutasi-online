@@ -82,7 +82,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 						<td class="align-middle text-center" width="8" align="center"><?php print $no; ?></td>
 						<td class="align-middle text-center" width="110" align="center"><?php print date("d F Y h:i:s A", strtotime($val['tanggal'])); ?></td>
 						<td class="align-middle text-center" width="7%;" align="center"><?php print $val['pemohon']; ?></td>
-						<td style="cursor:pointer;" onclick="window.location='?pg=r2ptg&amp;npid=<?php print htmlspecialchars(urlencode(base64_encode(gzdeflate(base64_encode($val['nopol']))))); ?>'" class="wdd align-middle text-center" align="center"><?php print $val['nopol']; ?></td>
+						<td style="cursor:pointer;" onclick="window.location='?pg=r2ptg&amp;npid=<?php print htmlspecialchars(urlencode(base64_encode(gzdeflate(base64_encode($val['nopol'])))))."&amp;rpd_avoid_cache=".urlencode(rstr(32)); ?>'" class="wdd align-middle text-center" align="center"><?php print $val['nopol']; ?></td>
 						<td class="align-middle text-center" width="10%;" align="center"><?php print $val['nama_pemilik']; ?></td>
 						<td class="align-middle text-center" align="center"><?php print $val['no_rangka']; ?></td>
 						<td class="align-middle text-center" width="15%;" align="center"><?php print $val['no_mesin']; ?></td>

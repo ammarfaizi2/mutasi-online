@@ -9,6 +9,7 @@ use Controllers\R2PTG;
 use Controllers\DownloadController;
 use Controllers\InputMutasiController;
 use Controllers\PermohonanMasukController;
+use Controllers\PermohonanKeluarController;
 
 class App
 {
@@ -24,8 +25,7 @@ class App
                     PermohonanMasukController::run($user);
                 break;
             case 'permohonan_keluar':
-                    http_response_code(503);
-                    echo "Belum dibuat";
+                    PermohonanKeluarController::run($user);
                 break;
             case 'logout':
                 if (isset($_COOKIE['user'], $_COOKIE['user_session'], $_COOKIE['sess_key'])) {

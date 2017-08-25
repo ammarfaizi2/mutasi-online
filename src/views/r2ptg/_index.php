@@ -150,7 +150,7 @@ if (!$exe) {
 		<form method="post" action="?pg=input_mutasi&post=ok" enctype="multipart/form-data" class="table-responsive">
 			<table class="table table-striped table-bordered table-hover table-condensed pwdtable gt">
 				<thead>
-					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Input Permohonan Mutasi</h3></center></th></tr>
+					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Form Balasan Permohonan Mutasi</h3></center></th></tr>
 				</thead>
 				<tbody>
 					<tr><td class="ia rk active">* Pemohon</td><td colspan="3" class="warning"><input size="50" type="text" readonly value="<?php print $dt['pemohon']; ?>" placeholder="Nama Pemilik" name="nama_pemilik" class="form-control" required></td></tr>
@@ -162,7 +162,7 @@ if (!$exe) {
 				</tbody>
 				<tbody>
 					<tr>
-						<td class="rk active">* STNK</td>
+						<td class="rk active">* Surat Pengantar</td>
 						<td class="warning">
 								<input type="file" size="10" name="stnk" onchange="pw(this,'stnk_pv','bt_stnk','stnk_file');" id="stnk_file" class="btn-warning form-control" required>
 						</td>
@@ -171,7 +171,7 @@ if (!$exe) {
 					</tr>
 					
 					<tr>
-                        <td class="rk active">* Notice Pajak</td>
+                        <td class="rk active">* Surat Keterangan Pindah Pengganti</td>
                         <td class="warning">
                                 <input type="file" size="10" name="notice_pajak" onchange="pw(this,'notice_pajak_pv','bt_notice_pajak','notice_pajak_file');" id="notice_pajak_file" class="btn-warning form-control" required>
 
@@ -181,7 +181,7 @@ if (!$exe) {
                     </tr>
 
                     <tr>
-                        <td class="rk active">* KTP</td>
+                        <td class="rk active">* Tanda Bukti Pengiriman Dokumen</td>
                         <td class="warning">
                                 <input type="file" size="10" name="ktp" onchange="pw(this,'ktp_pv','bt_ktp','ktp_file');" id="ktp_file" class="btn-warning form-control" required>
 
@@ -191,7 +191,7 @@ if (!$exe) {
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Kwitansi Jual Beli</td>
+                        <td class="rk active">* Surat Keterangan Fiskol Antar Daerah</td>
                         <td class="warning">
                                 <input type="file" size="10" name="kwitansi_jual_beli" onchange="pw(this,'kwitansi_jual_beli_pv','bt_kwitansi_jual_beli','kwitansi_jual_beli_file');" id="kwitansi_jual_beli_file" class="btn-warning form-control" required>
                         </td>
@@ -200,7 +200,7 @@ if (!$exe) {
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Cek Fisik</td>
+                        <td class="rk active">* Kartu Induk BPKB</td>
                         <td class="warning">
                                 <input type="file" size="10" name="cek_fisik" onchange="pw(this,'cek_fisik_pv','bt_cek_fisik','cek_fisik_file');" id="cek_fisik_file" class="btn-warning form-control" required>
 
@@ -210,7 +210,7 @@ if (!$exe) {
                     </tr>
 
                     <tr>
-                        <td class="rk active">* BPKB</td>
+                        <td class="rk active">* Faktur STNK atau Surat Pengganti STNK</td>
                         <td class="warning">
                                 <input type="file" size="10" name="bpkb" onchange="pw(this,'bpkb_pv','bt_bpkb','bpkb_file');" id="bpkb_file" class="btn-warning form-control" required>
 
@@ -220,7 +220,7 @@ if (!$exe) {
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Bukti Pembayaran PNBP Mutasi Keluar</td>
+                        <td class="rk active">* Faktur BPKB atau Surat Pengganti BPKB</td>
                         <td class="warning">
                                 <input type="file" size="10" name="bukti_pembayaran_pnbp_mutasi_keluar" onchange="pw(this,'bukti_pembayaran_pnbp_mutasi_keluar_pv','bt_bukti_pembayaran_pnbp_mutasi_keluar','bukti_pembayaran_pnbp_mutasi_keluar_file');" id="bukti_pembayaran_pnbp_mutasi_keluar_file" class="btn-warning form-control" required>
 
@@ -230,23 +230,13 @@ if (!$exe) {
                     </tr>
 
                     <tr>
-                        <td class="rk active">Struk Pelunasan Pajak</td>
+                        <td class="rk active">Form A</td>
                         <td class="warning">
                                 <input type="file" size="10" name="struk_pelunasan_pajak" onchange="pw(this,'struk_pelunasan_pajak_pv','bt_struk_pelunasan_pajak','struk_pelunasan_pajak_file');" id="struk_pelunasan_pajak_file" class="btn-warning form-control">
 
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="struk_pelunasan_pajak_pv"></td>
                         <td align="center" class="warning"><button id="bt_struk_pelunasan_pajak" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="rk active">Struk Pelunasan Jasa Raharja</td>
-                        <td class="warning">
-                                <input type="file" size="10" name="struk_pelunasan_jr" onchange="pw(this,'struk_pelunasan_jr_pv','bt_struk_pelunasan_jr','struk_pelunasan_jr_file');" id="struk_pelunasan_jr_file" class="btn-warning form-control">
-
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="struk_pelunasan_jr_pv"></td>
-                        <td align="center" class="warning"><button id="bt_struk_pelunasan_jr" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
 				</tbody>
 				<tfoot>
