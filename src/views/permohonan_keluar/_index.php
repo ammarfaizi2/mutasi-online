@@ -5,7 +5,9 @@ $sql2->execute(array(
 	":pe" => $_COOKIE['user']
 ));
 $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
-
+if (isset($_GET['cari_nopol'])) {
+	$get_nopol = strtoupper(preg_replace("#[^A-Za-z0-9]#", "", $_GET['cari_nopol']));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +49,15 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 		</nav>
 		<center>
 			<div style="margin-bottom: 2%;">
-				<h2>Permohonan Masuk Polres <?php print $user['nama_polres']; ?></h2>
+				<h2>Permohonan Keluar Polres <?php print $user['nama_polres']; ?></h2>
+			</div>
+			<div style="margin-bottom:2%;">
+				<form method="get" action="">
+					<input type="hidden" name="pg" value="permohonan_keluar">
+					<label>Nopol : </label>
+					<input type="text" name="cari_nopol" value="<?php print isset($_GET['cari_nopol']) ? htmlspecialchars($_GET['cari_nopol'], ENT_QUOTES, 'UTF-8') : ""; ?>">
+					<button>Cari</button>
+				</form>
 			</div>
 		</center>
 		<?php
@@ -55,7 +65,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 			?>
 			<center>
 			<div style="margin-top: 8%;">
-				<h1 style="font-weight: bold;">Tidak ada permohonan masuk</h1>
+				<h1 style="font-weight: bold;">Tidak ada permohonan keluar</h1>
 			</div>
 			</center>
 			<?php
@@ -70,10 +80,19 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 					$page = (isset($_GET['page']))? (int)$_GET['page'] : 1;
 					$limit = 5; // Jumlah data per halamannya
 					$offset = ($page - 1) * $limit;
-					$sql = $pdo->prepare("SELECT `b`.`nama_polres` AS `pemohon`,`a`.`memohon_ke`, `a`.`nopol`, `a`.`tanggal`, `a`.`nama_pemilik`, `a`.`no_rangka`, `a`.`no_mesin`, `a`.`no_bpkb`, `a`.`no_stnk`, `a`.`no_hp`, `a`.`file_stnk`, `a`.`file_notice_pajak`, `a`.`file_ktp`, `a`.`file_kwitansi_jual_beli`, `a`.`file_cek_fisik`, `a`.`file_bpkb`, `a`.`file_bukti_pembayaran_pnpb`, `a`.`file_struk_pelunasan_pajak`, `a`.`file_pelunasan_jasa_raharja`,`a`.`status` FROM `pemohon` AS `a` INNER JOIN `admin` AS `b` ON `a`.`memohon_ke`=`b`.`username` WHERE `pemohon`=:pe ORDER BY `status` LIMIT {$offset},{$limit};");
-					$sql->execute(array(
-						":pe" => $user['username'],
-					));
+					if (isset($_GET['cari_nopol'])) {
+						$sql = $pdo->prepare("SELECT `b`.`nama_polres` AS `pemohon`,`a`.`memohon_ke`, `a`.`nopol`, `a`.`tanggal`, `a`.`nama_pemilik`, `a`.`no_rangka`, `a`.`no_mesin`, `a`.`no_bpkb`, `a`.`no_stnk`, `a`.`no_hp`, `a`.`file_stnk`, `a`.`file_notice_pajak`, `a`.`file_ktp`, `a`.`file_kwitansi_jual_beli`, `a`.`file_cek_fisik`, `a`.`file_bpkb`, `a`.`file_bukti_pembayaran_pnpb`, `a`.`file_struk_pelunasan_pajak`, `a`.`file_pelunasan_jasa_raharja`,`a`.`status` FROM `pemohon` AS `a` INNER JOIN `admin` AS `b` ON `a`.`memohon_ke`=`b`.`username` WHERE `pemohon`=:pe AND `a`.`nopol` LIKE :nopol ORDER BY `status` LIMIT {$offset},{$limit};");
+						$sql->execute(array(
+							":pe" => $user['username'],
+							":nopol" => "%".$get_nopol."%"
+						));
+					} else {
+						$sql = $pdo->prepare("SELECT `b`.`nama_polres` AS `pemohon`,`a`.`memohon_ke`, `a`.`nopol`, `a`.`tanggal`, `a`.`nama_pemilik`, `a`.`no_rangka`, `a`.`no_mesin`, `a`.`no_bpkb`, `a`.`no_stnk`, `a`.`no_hp`, `a`.`file_stnk`, `a`.`file_notice_pajak`, `a`.`file_ktp`, `a`.`file_kwitansi_jual_beli`, `a`.`file_cek_fisik`, `a`.`file_bpkb`, `a`.`file_bukti_pembayaran_pnpb`, `a`.`file_struk_pelunasan_pajak`, `a`.`file_pelunasan_jasa_raharja`,`a`.`status` FROM `pemohon` AS `a` INNER JOIN `admin` AS `b` ON `a`.`memohon_ke`=`b`.`username` WHERE `pemohon`=:pe ORDER BY `status` LIMIT {$offset},{$limit};");
+						$sql->execute(array(
+							":pe" => $user['username'],
+						));
+					}
+					
 					$num = 1;
 					$no = $offset + 1;
 					while($val = $sql->fetch(PDO::FETCH_ASSOC)){
@@ -82,7 +101,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 						<td class="align-middle text-center" width="8" align="center"><?php print $no; ?></td>
 						<td class="align-middle text-center" width="110" align="center"><?php print date("d F Y h:i:s A", strtotime($val['tanggal'])); ?></td>
 						<td class="align-middle text-center" width="7%;" align="center"><?php print $val['pemohon']; ?></td>
-						<td style="cursor:pointer;" onclick="window.location='?pg=r2ptg&amp;npid=<?php print htmlspecialchars(urlencode(base64_encode(gzdeflate(base64_encode($val['nopol'])))))."&amp;rpd_avoid_cache=".urlencode(rstr(32)); ?>'" class="wdd align-middle text-center" align="center"><?php print $val['nopol']; ?></td>
+						<td style="cursor:pointer;" class="align-middle text-center" align="center"><?php print $val['nopol']; ?></td>
 						<td class="align-middle text-center" width="10%;" align="center"><?php print $val['nama_pemilik']; ?></td>
 						<td class="align-middle text-center" align="center"><?php print $val['no_rangka']; ?></td>
 						<td class="align-middle text-center" width="15%;" align="center"><?php print $val['no_mesin']; ?></td>
