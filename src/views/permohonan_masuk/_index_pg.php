@@ -105,7 +105,26 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 									?><li><a target="_blank" href="<?php print $a.$val['file_struk_pelunasan_pajak']; ?>">Struk Pelunasan Jasa Raharja</a></li><?php
 								}
 								?>
-								<li><a href="?pg=download&amp;info=cgg_data_file&amp;token=<?php print rstr(72); ?>&annotation=fixer&file=<?php print urlencode(base64_encode(strrev(base64_encode($val['nopol'])))); ?>"><button>Download Semua Berkas</button></a></li>
+								<li><a href="?pg=download&amp;info=cgg_data_file&amp;token=<?php print rstr(72); ?>&annotation=fixer&file=<?php print urlencode(base64_encode(strrev(base64_encode($val['nopol'])))); ?>"><button>Download Semua Berkas <?php print $val['status'] == "selesai" ? 1 : ""; ?></button></a></li>
+								<?php
+								if ($val['status'] == "selesai") {
+									?>
+									<div style="margin-top:5%;"></div>
+									<?php
+									$st = $pdo->prepare("SELECT `surat_pengantar`,`surat_keterangan_pindah_pengganti`,`tanda_bukti_pengiriman_dokumen`,`daftar_kelengkapan_dokumen`,`surat_keterangan_fiskol_antar_daerah`,`kartu_induk_bpkb` AS `kartu_induk_BPKB`,`faktur_stnk` AS `faktur_STNK`,`faktur_bpkb` AS `faktur_BPKB`,`form_a` FROM `balasan` WHERE `nopol`=:nopol LIMIT 1;");
+									$st->execute(array(
+											":nopol" => $val['nopol']
+										));
+									foreach($st->fetch(PDO::FETCH_ASSOC) as $kkk => $vvv) {
+									?>
+									<li><a target="_blank" href="<?php print $a.$vvv; ?>"><?php print ucwords(str_replace("_", " ", $kkk)); ?></a></li>
+									<?php
+									}
+									?>
+									<li><a href="?pg=download&amp;info=cgg_data_file&amp;token=<?php print rstr(72); ?>&annotation=fixer&file=<?php print urlencode(base64_encode(strrev(base64_encode($val['nopol']."_balasan")))); ?>"><button>Download Semua Berkas 2</button></a></li>
+									<?php
+								}
+								?>
 						</div>
 						</td>
 						</tr>

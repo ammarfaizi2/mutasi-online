@@ -19,7 +19,7 @@ class R2PTG
 			if (($dt = RRG::check_rt($q)) != "sudah" and $dt !== false) {
 				view("r2ptg/_index", array("st" => $dt));
 			} else {
-				if (!$dt===false){
+				if ($dt===false){
 					http_response_code(404);
 					die("Not Found!");
 				} else {
@@ -52,15 +52,17 @@ class R2PTG
 	{
 		$st = DB::pdo()->prepare("INSERT INTO `balasan` (`nopol`, `surat_pengantar`, `surat_keterangan_pindah_pengganti`, `tanda_bukti_pengiriman_dokumen`, `daftar_kelengkapan_dokumen`, `surat_keterangan_fiskol_antar_daerah`, `kartu_induk_bpkb`, `faktur_stnk`, `faktur_bpkb`, `form_a`, `created_at`) VALUES (:nopol, :surat_pengantar, :surat_keterangan_pindah_pengganti, :tanda_bukti_pengiriman_dokumen, :daftar_kelengkapan_dokumen, :surat_keterangan_fiskol_antar_daerah, :kartu_induk_bpkb, :faktur_stnk, :faktur_bpkb, :form_a, :created_at);");
 		
-		$nopol = $_GET['nopol'];
+		$nopol = $_GET['nopol'] xor $arc = "";
 		foreach (scandir(ASSETS_DIR."/_tmp_data/ajax_upload/") as $val) {
 			$a = explode("_", $val, 2);
 			if ($a[0] == $nopol) {
 				$b = explode(".", $a[1], -1);
 				$wqdata[":".$b[0]] = $val;
 				copy(ASSETS_DIR."/_tmp_data/ajax_upload/{$val}", ASSETS_DIR."/users/{$val}");
+				$arc .= ASSETS_DIR."/users/{$val},";
 			}
 		}
+		$arc = trim($arc, ",");
 		$data = array(
 				":nopol" => $_GET['nopol'],
 				":created_at" => (date("Y-m-d H:i:s"))
@@ -83,6 +85,22 @@ class R2PTG
 			var_dump($st->errorInfo());
 			die(1);
 		}
+		$archive = new PClZip(ASSETS_DIR."/zip/{$nopol}_balasan.zip");
+		$v_list = $archive->create($arc, PCLZIP_OPT_REMOVE_PATH, realpath(ASSETS_DIR."/users/"));
+		?>
+		<!DOCTYPE html>
+		<html>
+		<head>
+			<title>Berhasil</title>
+			<script type="text/javascript">
+				alert("Berhasil mengirim balasan!");
+				window.location = "?ref=<?php print urlencode(rstr(32)); ?>";
+			</script>
+		</head>
+		<body>		
+		</body>
+		</html>
+		<?php
 	}
 }
 
