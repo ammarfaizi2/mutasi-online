@@ -21,4 +21,13 @@ class FileHandler
             return false;
         }
     }
+
+    public static function td($input_name, $to)
+    {
+        if (isset($_FILES[$input_name]['tmp_name']) and !empty($_FILES[$input_name]['tmp_name'])) {
+            return move_uploaded_file($_FILES[$input_name]['tmp_name'], $to);
+        } else {
+            return false;
+        }
+    }
 }
