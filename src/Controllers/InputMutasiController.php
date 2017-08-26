@@ -20,6 +20,6 @@ class InputMutasiController
 
     public static function postAction()
     {
-    
+        
     }
 }

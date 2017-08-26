@@ -8,6 +8,8 @@ class APIUpload
 {
 	public static function run()
 	{
+		ini_set("upload_max_filesize", "40M");
+		ini_set("post_max_size", "40M");
 		if (isset($_GET['what']) && isset($_GET['sess'])) {
 			header("Content-type:application/json");
 			switch ($_GET['what']) {
