@@ -4,6 +4,7 @@ namespace Controllers;
 
 use PDO;
 use System\DB;
+use Handler\PCLZip;
 use Models\R2PTGModelCrr as RRG;
 
 class R2PTG
@@ -58,7 +59,7 @@ class R2PTG
 			if ($a[0] == $nopol) {
 				$b = explode(".", $a[1], -1);
 				$wqdata[":".$b[0]] = $val;
-				copy(ASSETS_DIR."/_tmp_data/ajax_upload/{$val}", ASSETS_DIR."/users/{$val}");
+				rename(ASSETS_DIR."/_tmp_data/ajax_upload/{$val}", ASSETS_DIR."/users/{$val}");
 				$arc .= ASSETS_DIR."/users/{$val},";
 			}
 		}
