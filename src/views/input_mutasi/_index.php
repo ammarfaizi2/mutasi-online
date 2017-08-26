@@ -200,7 +200,7 @@ $uniq = time();
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Struk Pelunasan Pajak</td>
+                        <td class="rk active">Struk Pelunasan Pajak</td>
                         <td class="warning">
                                 <input type="file" onchange="do_prev(this,'struk_pelunasan_pajak_preview','struk_pelunasan_pajak', 'struk_pelunasan_pajak_button');" size="10" name="struk_pelunasan_pajak" id="struk_pelunasan_pajak_file" class="btn-warning form-control">
                         </td>
@@ -209,7 +209,7 @@ $uniq = time();
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Struk Pelunasan Jasa Raharja</td>
+                        <td class="rk active">Struk Pelunasan Jasa Raharja</td>
                         <td class="warning">
                                 <input type="file" onchange="do_prev(this,'struk_pelunasan_jasa_raharja_preview','struk_pelunasan_jasa_raharja', 'struk_pelunasan_jasa_raharja_button');" size="10" name="struk_pelunasan_jasa_raharja" id="struk_pelunasan_jasa_raharja_file" class="btn-warning form-control">
                         </td>
