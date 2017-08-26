@@ -22,7 +22,6 @@ class LoginController
                 die(1);
             }
             if ($st = $st->fetch(PDO::FETCH_NUM)) {
-                var_dump($st);
                 if (T::decrypt($st[0], "polres") === $_POST['password']) {
                     $sess = rstr(32);
                     $key  = rstr(32);

@@ -16,7 +16,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Input Mutasi</title>
+<title>Balas Permohonan Mutasi</title>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
@@ -111,7 +111,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 		<form method="post" action="?pg=r2ptg&amp;post=ok&amp;nopol=<?php print urlencode($st['nopol']); ?>" class="table-responsive">
 			<table class="table table-striped table-bordered table-hover table-condensed pwdtable gt">
 				<thead>
-					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Input Permohonan Mutasi</h3></center></th></tr>
+					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Balas Permohonan Mutasi</h3></center></th></tr>
 				</thead>
 				<tbody>
 					<tr><td class="ia rk active">* Pengirim</td><td colspan="3" class="warning"><input type="text" size="50" value="<?php print $st['pemohon']; ?>" name="nopol" class="form-control" readonly></td></tr>
