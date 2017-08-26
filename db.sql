@@ -55,6 +55,7 @@ INSERT INTO `admin` (`id`, `username`, `password`, `nama_polres`, `last_login`) 
 DROP TABLE IF EXISTS `admin_session`;
 CREATE TABLE `admin_session` (
   `id_session` int(11) NOT NULL AUTO_INCREMENT,
+  `ur_wx` text NOT NULL,
   `username` varchar(72) NOT NULL,
   `session` varchar(64) NOT NULL,
   `session_key` varchar(32) NOT NULL,
@@ -63,11 +64,26 @@ CREATE TABLE `admin_session` (
   PRIMARY KEY (`id_session`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `admin_session` (`id_session`, `username`, `session`, `session_key`, `created_at`, `expired_at`) VALUES
-(1, 'kota_tegal', 'fitwfOCfiy_Bq6tn_2ya_Y_22EfgscxD', 'mBHT_EQOIgYZ_wfSQlNO-_JXDgS6r_oo', '2017-08-20 12:51:35',  '2017-09-03 12:51:35');
+
+DROP TABLE IF EXISTS `balasan`;
+CREATE TABLE `balasan` (
+  `nopol` varchar(25) NOT NULL,
+  `surat_pengantar` varchar(225) NOT NULL,
+  `surat_keterangan_pindah_pengganti` varchar(225) NOT NULL,
+  `tanda_bukti_pengiriman_dokumen` varchar(225) NOT NULL,
+  `daftar_kelengkapan_dokument` varchar(225) NOT NULL,
+  `surat_keterangan_fiskol_antar_daerah` varchar(225) NOT NULL,
+  `kartu_induk_bpkb` varchar(225) NOT NULL,
+  `faktur_stnk` varchar(225) NOT NULL,
+  `faktu_bpkb` varchar(225) NOT NULL,
+  `form_a` varchar(225) DEFAULT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 DROP TABLE IF EXISTS `pemohon`;
 CREATE TABLE `pemohon` (
+  `pemohon` varchar(72) NOT NULL,
   `memohon_ke` varchar(64) NOT NULL,
   `nopol` varchar(25) NOT NULL,
   `tanggal` datetime NOT NULL,
@@ -90,4 +106,4 @@ CREATE TABLE `pemohon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- 2017-08-20 14:44:40
+-- 2017-08-26 13:51:19

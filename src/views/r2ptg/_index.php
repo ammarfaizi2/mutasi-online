@@ -123,10 +123,10 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 					<tr><td class="ia rk active">* No STNK</td><td colspan="3" class="warning"><input size="50" type="text" value="<?php print $st['no_stnk']; ?>" name="no_stnk" class="form-control" readonly></td></tr>
 				</tbody>
 				<tbody>
-					 <tr>
+					  <tr>
                         <td class="rk active">* Surat Pengantar</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'surat_pengantar_preview','surat_pengantar', 'surat_pengantar_button');" size="10" name="surat_pengantar" id="surat_pengantar_file" class="btn-warning form-control" req>
+                                <input type="file" onchange="do_prev(this,'surat_pengantar_preview','surat_pengantar', 'surat_pengantar_button');" size="10" name="surat_pengantar" id="surat_pengantar_file" class="btn-warning form-control" required>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="surat_pengantar_preview"></td>
                         <td align="center" class="warning"><button id="surat_pengantar_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -135,7 +135,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     <tr>
                         <td class="rk active">* Surat Keterangan Pindah Pengganti</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'surat_keterangan_pindah_pengganti_preview','surat_keterangan_pindah_pengganti', 'surat_keterangan_pindah_pengganti_button');" size="10" name="surat_keterangan_pindah_pengganti" id="surat_keterangan_pindah_pengganti_file" class="btn-warning form-control" req>
+                                <input type="file" onchange="do_prev(this,'surat_keterangan_pindah_pengganti_preview','surat_keterangan_pindah_pengganti', 'surat_keterangan_pindah_pengganti_button');" size="10" name="surat_keterangan_pindah_pengganti" id="surat_keterangan_pindah_pengganti_file" class="btn-warning form-control" required>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="surat_keterangan_pindah_pengganti_preview"></td>
                         <td align="center" class="warning"><button id="surat_keterangan_pindah_pengganti_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -144,7 +144,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     <tr>
                         <td class="rk active">* Tanda Bukti Pengiriman Dokumen</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'tanda_bukti_pengiriman_dokumen_preview','tanda_bukti_pengiriman_dokumen', 'tanda_bukti_pengiriman_dokumen_button');" size="10" name="tanda_bukti_pengiriman_dokumen" id="tanda_bukti_pengiriman_dokumen_file" class="btn-warning form-control" req>
+                                <input type="file" onchange="do_prev(this,'tanda_bukti_pengiriman_dokumen_preview','tanda_bukti_pengiriman_dokumen', 'tanda_bukti_pengiriman_dokumen_button');" size="10" name="tanda_bukti_pengiriman_dokumen" id="tanda_bukti_pengiriman_dokumen_file" class="btn-warning form-control" required>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="tanda_bukti_pengiriman_dokumen_preview"></td>
                         <td align="center" class="warning"><button id="tanda_bukti_pengiriman_dokumen_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -153,7 +153,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     <tr>
                         <td class="rk active">* Daftar Kelengkapan Dokumen</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'daftar_kelengkapan_dokumen_preview','daftar_kelengkapan_dokumen', 'daftar_kelengkapan_dokumen_button');" size="10" name="daftar_kelengkapan_dokumen" id="daftar_kelengkapan_dokumen_file" class="btn-warning form-control" req>
+                                <input type="file" onchange="do_prev(this,'daftar_kelengkapan_dokumen_preview','daftar_kelengkapan_dokumen', 'daftar_kelengkapan_dokumen_button');" size="10" name="daftar_kelengkapan_dokumen" id="daftar_kelengkapan_dokumen_file" class="btn-warning form-control" required>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="daftar_kelengkapan_dokumen_preview"></td>
                         <td align="center" class="warning"><button id="daftar_kelengkapan_dokumen_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -162,7 +162,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     <tr>
                         <td class="rk active">* Surat Keterangan Fiskol Antar Daerah</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'surat_keterangan_fiskol_antar_daerah_preview','surat_keterangan_fiskol_antar_daerah', 'surat_keterangan_fiskol_antar_daerah_button');" size="10" name="surat_keterangan_fiskol_antar_daerah" id="surat_keterangan_fiskol_antar_daerah_file" class="btn-warning form-control" req>
+                                <input type="file" onchange="do_prev(this,'surat_keterangan_fiskol_antar_daerah_preview','surat_keterangan_fiskol_antar_daerah', 'surat_keterangan_fiskol_antar_daerah_button');" size="10" name="surat_keterangan_fiskol_antar_daerah" id="surat_keterangan_fiskol_antar_daerah_file" class="btn-warning form-control" required>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="surat_keterangan_fiskol_antar_daerah_preview"></td>
                         <td align="center" class="warning"><button id="surat_keterangan_fiskol_antar_daerah_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -171,7 +171,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     <tr>
                         <td class="rk active">* Kartu Induk Bpkb</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'kartu_induk_bpkb_preview','kartu_induk_bpkb', 'kartu_induk_bpkb_button');" size="10" name="kartu_induk_bpkb" id="kartu_induk_bpkb_file" class="btn-warning form-control" req>
+                                <input type="file" onchange="do_prev(this,'kartu_induk_bpkb_preview','kartu_induk_bpkb', 'kartu_induk_bpkb_button');" size="10" name="kartu_induk_bpkb" id="kartu_induk_bpkb_file" class="btn-warning form-control" required>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="kartu_induk_bpkb_preview"></td>
                         <td align="center" class="warning"><button id="kartu_induk_bpkb_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -180,7 +180,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     <tr>
                         <td class="rk active">* Faktur Stnk</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'faktur_stnk_preview','faktur_stnk', 'faktur_stnk_button');" size="10" name="faktur_stnk" id="faktur_stnk_file" class="btn-warning form-control" req>
+                                <input type="file" onchange="do_prev(this,'faktur_stnk_preview','faktur_stnk', 'faktur_stnk_button');" size="10" name="faktur_stnk" id="faktur_stnk_file" class="btn-warning form-control" required>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="faktur_stnk_preview"></td>
                         <td align="center" class="warning"><button id="faktur_stnk_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -189,7 +189,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     <tr>
                         <td class="rk active">* Faktur Bpkb</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'faktur_bpkb_preview','faktur_bpkb', 'faktur_bpkb_button');" size="10" name="faktur_bpkb" id="faktur_bpkb_file" class="btn-warning form-control" req>
+                                <input type="file" onchange="do_prev(this,'faktur_bpkb_preview','faktur_bpkb', 'faktur_bpkb_button');" size="10" name="faktur_bpkb" id="faktur_bpkb_file" class="btn-warning form-control" required>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="faktur_bpkb_preview"></td>
                         <td align="center" class="warning"><button id="faktur_bpkb_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
@@ -198,12 +198,11 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     <tr>
                         <td class="rk active">* Form A</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'form_a_preview','form_a', 'form_a_button');" size="10" name="form_a" id="form_a_file" class="btn-warning form-control" req>
+                                <input type="file" onchange="do_prev(this,'form_a_preview','form_a', 'form_a_button');" size="10" name="form_a" id="form_a_file" class="btn-warning form-control" required>
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="form_a_preview"></td>
                         <td align="center" class="warning"><button id="form_a_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
-
 				</tbody>
 				<tfoot>
 					<tr><td align="center" colspan="4">
@@ -215,7 +214,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 				</tfoot>
 			</table>
 			<script type="text/javascript">
-var a = ["stnk","notice_pajak", "ktp", "kwitansi_jual_beli", "cek_fisik", "bpkb", "bukti_pembayaran_pnbp_mutasi_keluar", "struk_pelunasan_pajak", "struk_pelunasan_jasa_raharja"],
+var a = ["surat_pengantar", "surat_keterangan_pindah_pengganti", "tanda_bukti_pengiriman_dokumen", "daftar_kelengkapan_dokumen", "surat_keterangan_fiskol_antar_daerah", "kartu_induk_bpkb", "faktur_stnk", "faktur_bpkb", "form_a"],
 			b = [];
 		for(x in a) {
 			b[a[x]] = document.getElementById(a[x]+"_file");
