@@ -94,11 +94,11 @@ class InputMutasiController
                     ":no_hp" => $_POST['no_hp']
                 );
             $data = array_merge($data, $wd);
-            if (!isset($data['file_struk_pelunasan_pajak'])) {
-                $data['file_struk_pelunasan_pajak'] = null;
+            if (!isset($data[':file_struk_pelunasan_pajak'])) {
+                $data[':file_struk_pelunasan_pajak'] = null;
             }
-            if (!isset($data['file_struk_pelunasan_jasa_raharja'])) {
-                $data['file_struk_pelunasan_jasa_raharja'] = null;
+            if (!isset($data[':file_struk_pelunasan_jasa_raharja'])) {
+                $data[':file_struk_pelunasan_jasa_raharja'] = null;
             }
             $exe = $st->execute($data);
             if (!$exe) {
