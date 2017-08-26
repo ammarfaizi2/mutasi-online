@@ -38,6 +38,7 @@ class APIUpload
 
 	private static function input_mutasi()
 	{
+		sleep(3);
 		$v = function($status, $msg){
 			return json_encode(array(
 					"status" => true,
@@ -46,7 +47,7 @@ class APIUpload
 		};
 		$a = ASSETS_DIR."/_tmp_data/ajax_upload/".$_GET['sess']."_".$_GET['file_name'].".jpg";
 		if (F::td('file', $a)) {
-			print $v(true, "Berhasil mengupload file!");
+			print $v(true, "Berhasil mengupload file ".$_GET['file_name']."!");
 		} else {
 			print $v(false, "Gagal mengupload file!");
 		}
@@ -54,6 +55,7 @@ class APIUpload
 
 	private static function delete()
 	{
+		sleep(5);
 		$sess = $_GET['sess'];
 		$del = $_GET['delete'];
 		$ed = strlen($sess);
