@@ -1,46 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mutasi Online</title>
-	<style type="text/css">
-		.fcg {
-			margin-top: 10%;
-		}
-		.iicg {
-			margin-top: 1%;
-		}
-		.icg {
-			margin-top: 2%;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
+	<title>Login</title>
 </head>
 <body>
-<center>
-	<div class="fcg">
-	<form action="" method="post">
-		<div class="iicg">
-			<div>
-				<label>Username</label>
-			</div>
-			<div>
-				<input type="text" name="username">
-			</div>
-		</div>
-		<div class="iicg">
-			<div>
-				<label>Password</label>
-			</div>
-			<div>
-				<input type="password" name="password">
-			</div>
-		</div>
-		<div class="icg">
-			<input type="hidden" name="compare" value="<?php print $compare; ?>">
-			<input type="hidden" name="ckey" value="<?php print $ckey; ?>">
-			<input type="submit" name="login" value="Login">
-		</div>
-	</form>
+	<div class="login-page">
+	  <div class="form">
+	    <form class="register-form">
+	      <input type="text" placeholder="name"/>
+	      <input type="password" placeholder="password"/>
+	      <input type="text" placeholder="email address"/>
+	      <button>create</button>
+	      <p class="message">Already registered? <a href="#">Sign In</a></p>
+	    </form>
+	    <form class="login-form">
+	      <input type="text" placeholder="username"/>
+	      <input type="password" placeholder="password"/>
+	      <button>login</button>
+	      <p class="message">Not registered? <a href="#">Create an account</a></p>
+	    </form>
+	  </div>
 	</div>
-</center>
 </body>
 </html>
