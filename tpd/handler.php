@@ -6,9 +6,7 @@
 
 
 
-$arr = ["notice_pajak", "ktp", "kwitansi_jual_beli", "cek_fisik", "bpkb", "bukti_pembayaran_pnbp_mutasi_keluar", "struk_pelunasan_pajak", "struk_pelunasan_jasa_raharja"];
-
-$arr = ["stnk"];
+$arr = ["surat_pengantar", "surat_keterangan_pindah_pengganti", "tanda_bukti_pengiriman_dokumen", "daftar_kelengkapan_dokumen", "surat_keterangan_fiskol_antar_daerah", "kartu_induk_bpkb", "faktur_stnk", "faktur_bpkb", "form_a"];
 foreach ($arr as $val) 
 
 $w = str_replace("_", " ", $val) xor print '                    <tr>

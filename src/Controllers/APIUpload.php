@@ -24,7 +24,17 @@ class APIUpload
 						}
 					break;
 				case 'input_mutasi_delete':
-						self::delete();
+						self::input_mutasi_delete();
+					break;
+				case 'reply_mutasi':
+						if (isset($_GET['file_name'])) {
+							self::reply_mutasi();
+						} else {
+							die(json_encode(array(
+									"status" => false,
+									"data" => "Empty file name!"
+								)));
+						}
 					break;
 				default:
 					echo "Error !";
@@ -38,7 +48,6 @@ class APIUpload
 
 	private static function input_mutasi()
 	{
-		sleep(3);
 		$v = function($status, $msg){
 			return json_encode(array(
 					"status" => true,
@@ -53,9 +62,8 @@ class APIUpload
 		}
 	}
 
-	private static function delete()
+	private static function input_mutasi_delete()
 	{
-		sleep(5);
 		$sess = $_GET['sess'];
 		$del = $_GET['delete'];
 		$ed = strlen($sess);
@@ -69,5 +77,10 @@ class APIUpload
 			}
 		}
 		print json_encode($ard);
+	}
+
+	private static function reply_mutasi()
+	{
+		
 	}
 }

@@ -22,7 +22,7 @@ class R2PTGModelCrr
 		if ($st['status'] == "sedang proses") {
 			return $st;
 		} else {
-			return "sudah";
+			return $st===false ? false : "sudah";
 		}
 	}
 }

@@ -1,5 +1,6 @@
 <?php
-use System\DB;
+$uniq = $st['nopol'];
+/*use System\DB;
 
 $nopol = $uniq = base64_decode(gzinflate(base64_decode($_GET['npid'])));
 $st = DB::pdo()->prepare("SELECT `a`.`nama_polres` AS `pengirim`,`nopol`,`nama_pemilik`,`no_rangka`,`no_mesin`,`no_bpkb`,`no_stnk`,`no_hp` FROM `pemohon` INNER JOIN `admin` AS `a` ON `a`.`username`=`pemohon` WHERE `nopol`=:nopol LIMIT 1;");
@@ -10,7 +11,7 @@ if (!$exe) {
 	var_dump($st->errorInfo());
 	die();
 }
-$st = $st->fetch(PDO::FETCH_ASSOC);
+$st = $st->fetch(PDO::FETCH_ASSOC);*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -113,94 +114,94 @@ $st = $st->fetch(PDO::FETCH_ASSOC);
 					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Input Permohonan Mutasi</h3></center></th></tr>
 				</thead>
 				<tbody>
-					<tr><td class="ia rk active">* Pengirim</td><td colspan="3" class="warning"><input type="text" size="50" value="<?php print $st['pengirim']; ?>" name="nopol" class="form-control" readonly></td></tr>
+					<tr><td class="ia rk active">* Pengirim</td><td colspan="3" class="warning"><input type="text" size="50" value="<?php print $st['pemohon']; ?>" name="nopol" class="form-control" readonly></td></tr>
 					<tr><td class="ia rk active">* Nopol</td><td colspan="3" class="warning"><input type="text" size="50" value="<?php print $st['nopol']; ?>" name="nopol" class="form-control" readonly></td></tr>
 					<tr><td class="ia rk active">* Nama Pemilik</td><td colspan="3" class="warning"><input size="50" type="text" value="<?php print $st['nama_pemilik']; ?>" name="nama_pemilik" class="form-control" readonly></td></tr>
 					<tr><td class="ia rk active">* No Rangka</td><td colspan="3" class="warning"><input size="50" type="text" value="<?php print $st['no_rangka']; ?>" name="no_rangka" class="form-control" readonly></td></tr>
 					<tr><td class="ia rk active">* No Mesin</td><td colspan="3" class="warning"><input size="50" type="text" value="<?php print $st['no_mesin']; ?>" name="no_mesin" class="form-control" readonly></td></tr>
 					<tr><td class="ia rk active">* No BPKB</td><td colspan="3" class="warning"><input size="50" type="text" value="<?php print $st['no_bpkb']; ?>" name="no_bpkb" class="form-control" readonly></td></tr>
 					<tr><td class="ia rk active">* No STNK</td><td colspan="3" class="warning"><input size="50" type="text" value="<?php print $st['no_stnk']; ?>" name="no_stnk" class="form-control" readonly></td></tr>
-					<tr><td class="ia rk active">* No HP</td><td colspan="3" class="warning"><input size="50" type="text" value="<?php print $st['no_hp']; ?>" name="no_hp" class="form-control" readonly></td></tr>
 				</tbody>
 				<tbody>
-					<tr>
-                        <td class="rk active">* STNK</td>
-                        <td class="warning">
-                                <input type="file" onchange="do_prev(this,'stnk_preview','stnk', 'stnk_button');" size="10" name="stnk" id="stnk_file" class="btn-warning form-control" required>
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="stnk_preview"></td>
-                        <td align="center" class="warning"><button id="stnk_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
 					 <tr>
-                        <td class="rk active">* Notice Pajak</td>
+                        <td class="rk active">* Surat Pengantar</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'notice_pajak_preview','notice_pajak', 'notice_pajak_button');" size="10" name="notice_pajak" id="notice_pajak_file" class="btn-warning form-control" required>
+                                <input type="file" onchange="do_prev(this,'surat_pengantar_preview','surat_pengantar', 'surat_pengantar_button');" size="10" name="surat_pengantar" id="surat_pengantar_file" class="btn-warning form-control" req>
                         </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="notice_pajak_preview"></td>
-                        <td align="center" class="warning"><button id="notice_pajak_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="surat_pengantar_preview"></td>
+                        <td align="center" class="warning"><button id="surat_pengantar_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
 
                     <tr>
-                        <td class="rk active">* KTP</td>
+                        <td class="rk active">* Surat Keterangan Pindah Pengganti</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'ktp_preview','ktp', 'ktp_button');" size="10" name="ktp" id="ktp_file" class="btn-warning form-control" required>
+                                <input type="file" onchange="do_prev(this,'surat_keterangan_pindah_pengganti_preview','surat_keterangan_pindah_pengganti', 'surat_keterangan_pindah_pengganti_button');" size="10" name="surat_keterangan_pindah_pengganti" id="surat_keterangan_pindah_pengganti_file" class="btn-warning form-control" req>
                         </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="ktp_preview"></td>
-                        <td align="center" class="warning"><button id="ktp_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="surat_keterangan_pindah_pengganti_preview"></td>
+                        <td align="center" class="warning"><button id="surat_keterangan_pindah_pengganti_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Kwitansi Jual Beli</td>
+                        <td class="rk active">* Tanda Bukti Pengiriman Dokumen</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'kwitansi_jual_beli_preview','kwitansi_jual_beli', 'kwitansi_jual_beli_button');" size="10" name="kwitansi_jual_beli" id="kwitansi_jual_beli_file" class="btn-warning form-control" required>
+                                <input type="file" onchange="do_prev(this,'tanda_bukti_pengiriman_dokumen_preview','tanda_bukti_pengiriman_dokumen', 'tanda_bukti_pengiriman_dokumen_button');" size="10" name="tanda_bukti_pengiriman_dokumen" id="tanda_bukti_pengiriman_dokumen_file" class="btn-warning form-control" req>
                         </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="kwitansi_jual_beli_preview"></td>
-                        <td align="center" class="warning"><button id="kwitansi_jual_beli_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="tanda_bukti_pengiriman_dokumen_preview"></td>
+                        <td align="center" class="warning"><button id="tanda_bukti_pengiriman_dokumen_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Cek Fisik</td>
+                        <td class="rk active">* Daftar Kelengkapan Dokumen</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'cek_fisik_preview','cek_fisik', 'cek_fisik_button');" size="10" name="cek_fisik" id="cek_fisik_file" class="btn-warning form-control" required>
+                                <input type="file" onchange="do_prev(this,'daftar_kelengkapan_dokumen_preview','daftar_kelengkapan_dokumen', 'daftar_kelengkapan_dokumen_button');" size="10" name="daftar_kelengkapan_dokumen" id="daftar_kelengkapan_dokumen_file" class="btn-warning form-control" req>
                         </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="cek_fisik_preview"></td>
-                        <td align="center" class="warning"><button id="cek_fisik_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="daftar_kelengkapan_dokumen_preview"></td>
+                        <td align="center" class="warning"><button id="daftar_kelengkapan_dokumen_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
 
                     <tr>
-                        <td class="rk active">* BPKB</td>
+                        <td class="rk active">* Surat Keterangan Fiskol Antar Daerah</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'bpkb_preview','bpkb', 'bpkb_button');" size="10" name="bpkb" id="bpkb_file" class="btn-warning form-control" required>
+                                <input type="file" onchange="do_prev(this,'surat_keterangan_fiskol_antar_daerah_preview','surat_keterangan_fiskol_antar_daerah', 'surat_keterangan_fiskol_antar_daerah_button');" size="10" name="surat_keterangan_fiskol_antar_daerah" id="surat_keterangan_fiskol_antar_daerah_file" class="btn-warning form-control" req>
                         </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="bpkb_preview"></td>
-                        <td align="center" class="warning"><button id="bpkb_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="surat_keterangan_fiskol_antar_daerah_preview"></td>
+                        <td align="center" class="warning"><button id="surat_keterangan_fiskol_antar_daerah_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Bukti Pembayaran PNBP Mutasi Keluar</td>
+                        <td class="rk active">* Kartu Induk Bpkb</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'bukti_pembayaran_pnbp_mutasi_keluar_preview','bukti_pembayaran_pnbp_mutasi_keluar', 'bukti_pembayaran_pnbp_mutasi_keluar_button');" size="10" name="bukti_pembayaran_pnbp_mutasi_keluar" id="bukti_pembayaran_pnbp_mutasi_keluar_file" class="btn-warning form-control" required>
+                                <input type="file" onchange="do_prev(this,'kartu_induk_bpkb_preview','kartu_induk_bpkb', 'kartu_induk_bpkb_button');" size="10" name="kartu_induk_bpkb" id="kartu_induk_bpkb_file" class="btn-warning form-control" req>
                         </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="bukti_pembayaran_pnbp_mutasi_keluar_preview"></td>
-                        <td align="center" class="warning"><button id="bukti_pembayaran_pnbp_mutasi_keluar_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="kartu_induk_bpkb_preview"></td>
+                        <td align="center" class="warning"><button id="kartu_induk_bpkb_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
 
                     <tr>
-                        <td class="rk active">Struk Pelunasan Pajak</td>
+                        <td class="rk active">* Faktur Stnk</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'struk_pelunasan_pajak_preview','struk_pelunasan_pajak', 'struk_pelunasan_pajak_button');" size="10" name="struk_pelunasan_pajak" id="struk_pelunasan_pajak_file" class="btn-warning form-control">
+                                <input type="file" onchange="do_prev(this,'faktur_stnk_preview','faktur_stnk', 'faktur_stnk_button');" size="10" name="faktur_stnk" id="faktur_stnk_file" class="btn-warning form-control" req>
                         </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="struk_pelunasan_pajak_preview"></td>
-                        <td align="center" class="warning"><button id="struk_pelunasan_pajak_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="faktur_stnk_preview"></td>
+                        <td align="center" class="warning"><button id="faktur_stnk_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
 
                     <tr>
-                        <td class="rk active">Struk Pelunasan Jasa Raharja</td>
+                        <td class="rk active">* Faktur Bpkb</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'struk_pelunasan_jasa_raharja_preview','struk_pelunasan_jasa_raharja', 'struk_pelunasan_jasa_raharja_button');" size="10" name="struk_pelunasan_jasa_raharja" id="struk_pelunasan_jasa_raharja_file" class="btn-warning form-control">
+                                <input type="file" onchange="do_prev(this,'faktur_bpkb_preview','faktur_bpkb', 'faktur_bpkb_button');" size="10" name="faktur_bpkb" id="faktur_bpkb_file" class="btn-warning form-control" req>
                         </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="struk_pelunasan_jasa_raharja_preview"></td>
-                        <td align="center" class="warning"><button id="struk_pelunasan_jasa_raharja_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="faktur_bpkb_preview"></td>
+                        <td align="center" class="warning"><button id="faktur_bpkb_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="rk active">* Form A</td>
+                        <td class="warning">
+                                <input type="file" onchange="do_prev(this,'form_a_preview','form_a', 'form_a_button');" size="10" name="form_a" id="form_a_file" class="btn-warning form-control" req>
+                        </td>
+                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="form_a_preview"></td>
+                        <td align="center" class="warning"><button id="form_a_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
                     </tr>
 
 				</tbody>
