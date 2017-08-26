@@ -108,7 +108,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 		<a href="?"><button class="btn-lg btn-primary" style="margin-top:1em;"><i class="fa fa-fw fa-chevron-left"></i> Kembali</button></a>
 	</div>
 	<div class="fcg">
-		<form method="post" action="?pg=input_mutasi&post=ok" class="table-responsive">
+		<form method="post" action="?pg=r2ptg&amp;post=ok&amp;nopol=<?php print urlencode($st['nopol']); ?>" class="table-responsive">
 			<table class="table table-striped table-bordered table-hover table-condensed pwdtable gt">
 				<thead>
 					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Input Permohonan Mutasi</h3></center></th></tr>
@@ -196,9 +196,9 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Form A</td>
+                        <td class="rk active">Form A</td>
                         <td class="warning">
-                                <input type="file" onchange="do_prev(this,'form_a_preview','form_a', 'form_a_button');" size="10" name="form_a" id="form_a_file" class="btn-warning form-control" required>
+                                <input type="file" onchange="do_prev(this,'form_a_preview','form_a', 'form_a_button');" size="10" name="form_a" id="form_a_file" class="btn-warning form-control">
                         </td>
                         <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="form_a_preview"></td>
                         <td align="center" class="warning"><button id="form_a_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>

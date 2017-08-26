@@ -45,7 +45,7 @@ class InputMutasiController
                     $b = explode(".", $a[1], -1);
                     $sr = ":file_".$b[0];
                     $wd[$sr] = $nopol."_".$a[1];
-                    rename(ASSETS_DIR."/_tmp_data/ajax_upload/{$val}",  ASSETS_DIR."/users/".$wd[$sr]);
+                    copy(ASSETS_DIR."/_tmp_data/ajax_upload/{$val}",  ASSETS_DIR."/users/".$wd[$sr]);
                 }
             }
             $st = DB::pdo()->prepare("INSERT INTO `pemohon` (`pemohon`, `memohon_ke`, `nopol`, `tanggal`, `nama_pemilik`, `no_rangka`, `no_mesin`, `no_bpkb`, `no_stnk`, `no_hp`, `file_stnk`, `file_notice_pajak`, `file_ktp`, `file_kwitansi_jual_beli`, `file_cek_fisik`, `file_bpkb`, `file_bukti_pembayaran_pnpb`, `file_struk_pelunasan_pajak`, `file_pelunasan_jasa_raharja`, `status`) VALUES (:pemohon, :memohon_ke, :nopol, :tanggal, :nama_pemilik, :no_rangka, :no_mesin, :no_bpkb, :no_stnk, :no_hp, :file_stnk, :file_notice_pajak, :file_ktp, :file_kwitansi_jual_beli, :file_cek_fisik, :file_bpkb, :file_bukti_pembayaran_pnbp_mutasi_keluar, :file_struk_pelunasan_pajak, :file_struk_pelunasan_jasa_raharja, 'sedang proses');");

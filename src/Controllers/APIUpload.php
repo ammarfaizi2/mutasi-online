@@ -26,6 +26,9 @@ class APIUpload
 				case 'input_mutasi_delete':
 						self::input_mutasi_delete();
 					break;
+				case 'reply_mutasi_delete':
+						self::reply_mutasi_delete();
+					break;
 				case 'reply_mutasi':
 						if (isset($_GET['file_name'])) {
 							self::reply_mutasi();
@@ -81,6 +84,34 @@ class APIUpload
 
 	private static function reply_mutasi()
 	{
-		
+		$v = function($status, $msg){
+			return json_encode(array(
+					"status" => true,
+					"data"   => $msg
+				), 128);
+		};
+		$a = ASSETS_DIR."/_tmp_data/ajax_upload/".$_GET['sess']."_".$_GET['file_name'].".jpg";
+		if (F::td('file', $a)) {
+			print $v(true, "Berhasil mengupload file ".$_GET['file_name']."!");
+		} else {
+			print $v(false, "Gagal mengupload file!");
+		}
+	}
+
+	private static function reply_mutasi_delete()
+	{
+		$sess = $_GET['sess'];
+		$del = $_GET['delete'];
+		$ed = strlen($sess);
+		$ard = array(
+				"deleted_file" => array()
+			);
+		foreach (scandir(ASSETS_DIR."/_tmp_data/ajax_upload/") as $val) {
+			if ($val == $sess."_".$del.".jpg") {
+				unlink(ASSETS_DIR."/_tmp_data/ajax_upload/".$val);
+				$ard['deleted_file'][] = $val;
+			}
+		}
+		print json_encode($ard);
 	}
 }
