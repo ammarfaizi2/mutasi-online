@@ -6,6 +6,7 @@ use PDO;
 use System\DB;
 use Models\User;
 use Controllers\R2PTG;
+use Controllers\APIUpload;
 use Controllers\DownloadController;
 use Controllers\InputMutasiController;
 use Controllers\PermohonanMasukController;
@@ -49,6 +50,9 @@ class App
                 break;
             case 'r2ptg':
                     R2PTG::run();
+                break;
+            case 'upload':
+                    APIUpload::run();
                 break;
             default:
                 http_response_code(404);

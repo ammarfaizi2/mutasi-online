@@ -1,6 +1,5 @@
 <?php
 use System\DB;
-
 $st = DB::pdo()->prepare("SELECT `username`,`nama_polres` FROM `admin` WHERE `username`!=:user  ORDER BY `nama_polres` LIMIT 35;");
 $exe = $st->execute(
     array(
@@ -13,6 +12,7 @@ if (!$exe) {
 } else {
     $st = $st->fetchAll(\PDO::FETCH_ASSOC);
 }
+$uniq = time();
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,126 +20,72 @@ if (!$exe) {
 <title>Input Mutasi</title>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-<script type="text/javascript" src="assets/js/bootstrap.min.js" ></script>
 <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js" ></script>
 <script type="text/javascript">
-	function pw(gambar,idpreview, bt, fb){
-        var gb = gambar.files;
-        var bt = document.getElementById(bt);
-        for (var i = 0; i < gb.length; i++){
-            var gbPreview = gb[i];
-            var imageType = /image.*/;
-            var preview = document.getElementById(idpreview);            
-            var reader  = new FileReader();
-            if (gbPreview.type.match(imageType)) {
-                preview.file = gbPreview;
-                reader.onload = (function(element) {
-                    return function(e) {
-                        element.src = e.target.result;
-                    };
-                })(preview);
-                reader.readAsDataURL(gbPreview);
-                bt.disabled = false;
-		        bt.addEventListener("click", function(){
-		        	var a = document.getElementById(fb);
-		        	a.value = "";
-		        	bt.disabled = 1;
-		        	document.getElementById(idpreview).src = "";
-		        });
-            }else{
-                alert("Type file tidak sesuai!");
-                gambar.value = "";
-                bt.disabled = true;
-            }
-        }
-    }
-    function ck_file(pv, button, id_wg){
-		if (document.getElementById(id_wg).value != "") {
-			pw(document.getElementById(id_wg), pv, button, id_wg);
-		} else {
-			"have_done";
+	function upload(_file, se_file)
+	{
+		//var _file = document.getElementById(file);
+		if(_file.files.length === 0){
+			alert("File bermasalah");
+			return 0;
+		}
+		var data = new FormData();
+		data.append(se_file, _file.files[0]);
+		var request = new XMLHttpRequest();
+	    request.onreadystatechange = function(){
+	        if(request.readyState == 4){
+	            try {
+	                var resp = JSON.parse(request.response);
+	            } catch (e){
+	                var resp = {
+	                    status: 'error',
+	                    data: 'Unknown error occurred: [' + request.responseText + ']'
+	                };
+	            }
+	            console.log(resp.status + ': ' + resp.data);
+	        }
+	    };
+	    request.upload.addEventListener('progress', function(e){
+	        
+	    }, false);
+		request.open('POST', '?pg=upload&what=input_mutasi');
+		request.send(data);
+	}
+	function do_prev(file_instance, id_preview, save_name)
+	{
+		var gb = file_instance.files,
+			pv = document.getElementById(id_preview),
+			i  = 0;
+		for(;i<gb.length;i++){
+			var reader = new FileReader();
+			if(gb[i].type.match(/image.*/)){
+				pv.file = gb[i];
+				reader.onload = (function(element){
+					return function (e) {
+						element.src = e.target.result;
+					}
+				})(pv);
+				reader.readAsDataURL(gb[i]);
+				upload(file_instance, save_name);
+			} else {
+				alert("Type file tidak sesuai!");
+			}
 		}
 	}
-	window.onload = function(){
-		ck_file('stnk_pv','bt_stnk','stnk_file');
-		ck_file('notice_pajak_pv','bt_notice_pajak','notice_pajak_file');
-		ck_file('ktp_pv','bt_ktp','ktp_file');
-		ck_file('kwitansi_jual_beli_pv','bt_kwitansi_jual_beli','kwitansi_jual_beli_file');
-		ck_file('cek_fisik_pv','bt_cek_fisik','cek_fisik_file');
-		ck_file('bpkb_pv','bt_bpkb','bpkb_file');
-		ck_file('bukti_pembayaran_pnbp_mutasi_keluar_pv','bt_bukti_pembayaran_pnbp_mutasi_keluar','bukti_pembayaran_pnbp_mutasi_keluar_file');
-		ck_file('struk_pelunasan_pajak_pv','bt_struk_pelunasan_pajak','struk_pelunasan_pajak_file');
-		ck_file('struk_pelunasan_jr_pv','bt_struk_pelunasan_jr','struk_pelunasan_jr_file');
-	}
+	window.onload = function()
+	{
+		var a = ["stnk"],
+		    b = null;
+		for(x in a) {
+			b = document.getElementById(a[x]+"_file");
+			b.addEventListener("change", function(){
+				do_prev(b, a[x]+"_preview", a[x]+"_file", a[x]+"_from_<?php print $uniq; ?>");
+			});
+		}
+	};
 </script>
-<style type="text/css">
-	body {
-		font-family: Tahoma, Arial;
-		background-color: #D26C6C;
-	}
-	.fcg{
-		margin-top:3%;
-		margin-bottom: 10%;
-		border-radius: 2%;
-	}
-	.ia{
-		width:30%;
-	}
-	.ii{
-		
-	}
-	.pvw {
-		width: 30px;
-		height: 30px;
-	}
-	th, td {
-		 /* background-color: #fff;
-    	border: 2px solid black;  */
-	}
-	input[type="file"] {
-    	margin-top:0%;
-    	padding-bottom: 12.5%;
-    	cursor: pointer;
-	}
-	tr {
-		background-color: #fff;
-	}
-    .container-fluid {
-        width: 50%;
-    }
-    .container-fluid form .rk{
-        text-align: left;
-        padding-left: 1em;
-    }
-	.img-thumbnail {
-		width: 30px;
-		height: 30px;
-	}
-	.lf {
-		border: 1px solid #ccc;
-    	display: inline-block;
-    	padding: 10px 14px;
-    	cursor: pointer;
-	}
-	.dlbt {
-		padding-top: 15%;
-		padding-bottom: 15%;
-	}
-	i {
-		
-	}
-	.bgg {
-		padding-right: 10%;
-		padding-left: 10%;
-	}
-	.pwdtable {
-		border: 4px solid #CECECE;
-		border-radius: 30px;
-	}
-	.gt {
-		border: 5px solid black;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="assets/css/input.css">
 </head>
 <body>
 <center class="container-fluid">
@@ -178,90 +124,11 @@ if (!$exe) {
 					<tr>
 						<td class="rk active">* STNK</td>
 						<td class="warning">
-								<input type="file" size="10" name="stnk" onchange="pw(this,'stnk_pv','bt_stnk','stnk_file');" id="stnk_file" class="btn-warning form-control" required>
+								<input type="file" size="10" name="stnk" id="stnk_file" class="btn-warning form-control" required>
 						</td>
-						<td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="stnk_pv"></td>
-						<td align="center" class="warning"><button id="bt_stnk" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
+						<td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="stnk_preview"></td>
+						<td align="center" class="warning"><button id="stnk_button" type="button" class="dlbt" disabled><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
 					</tr>
-					
-					<tr>
-                        <td class="rk active">* Notice Pajak</td>
-                        <td class="warning">
-                                <input type="file" size="10" name="notice_pajak" onchange="pw(this,'notice_pajak_pv','bt_notice_pajak','notice_pajak_file');" id="notice_pajak_file" class="btn-warning form-control" required>
-
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="notice_pajak_pv"></td>
-                        <td align="center" class="warning"><button id="bt_notice_pajak" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="rk active">* KTP</td>
-                        <td class="warning">
-                                <input type="file" size="10" name="ktp" onchange="pw(this,'ktp_pv','bt_ktp','ktp_file');" id="ktp_file" class="btn-warning form-control" required>
-
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="ktp_pv"></td>
-                        <td align="center" class="warning"><button value="Hapus" id="bt_ktp" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="rk active">* Kwitansi Jual Beli</td>
-                        <td class="warning">
-                                <input type="file" size="10" name="kwitansi_jual_beli" onchange="pw(this,'kwitansi_jual_beli_pv','bt_kwitansi_jual_beli','kwitansi_jual_beli_file');" id="kwitansi_jual_beli_file" class="btn-warning form-control" required>
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="kwitansi_jual_beli_pv"></td>
-                        <td align="center" class="warning"><button id="bt_kwitansi_jual_beli" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="rk active">* Cek Fisik</td>
-                        <td class="warning">
-                                <input type="file" size="10" name="cek_fisik" onchange="pw(this,'cek_fisik_pv','bt_cek_fisik','cek_fisik_file');" id="cek_fisik_file" class="btn-warning form-control" required>
-
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="cek_fisik_pv"></td>
-                        <td align="center" class="warning"><button id="bt_cek_fisik" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="rk active">* BPKB</td>
-                        <td class="warning">
-                                <input type="file" size="10" name="bpkb" onchange="pw(this,'bpkb_pv','bt_bpkb','bpkb_file');" id="bpkb_file" class="btn-warning form-control" required>
-
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="bpkb_pv"></td>
-                        <td align="center" class="warning"><button id="bt_bpkb" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="rk active">* Bukti Pembayaran PNBP Mutasi Keluar</td>
-                        <td class="warning">
-                                <input type="file" size="10" name="bukti_pembayaran_pnbp_mutasi_keluar" onchange="pw(this,'bukti_pembayaran_pnbp_mutasi_keluar_pv','bt_bukti_pembayaran_pnbp_mutasi_keluar','bukti_pembayaran_pnbp_mutasi_keluar_file');" id="bukti_pembayaran_pnbp_mutasi_keluar_file" class="btn-warning form-control" required>
-
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="bukti_pembayaran_pnbp_mutasi_keluar_pv"></td>
-                        <td align="center" class="warning"><button id="bt_bukti_pembayaran_pnbp_mutasi_keluar" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="rk active">Struk Pelunasan Pajak</td>
-                        <td class="warning">
-                                <input type="file" size="10" name="struk_pelunasan_pajak" onchange="pw(this,'struk_pelunasan_pajak_pv','bt_struk_pelunasan_pajak','struk_pelunasan_pajak_file');" id="struk_pelunasan_pajak_file" class="btn-warning form-control">
-
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="struk_pelunasan_pajak_pv"></td>
-                        <td align="center" class="warning"><button id="bt_struk_pelunasan_pajak" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="rk active">Struk Pelunasan Jasa Raharja</td>
-                        <td class="warning">
-                                <input type="file" size="10" name="struk_pelunasan_jr" onchange="pw(this,'struk_pelunasan_jr_pv','bt_struk_pelunasan_jr','struk_pelunasan_jr_file');" id="struk_pelunasan_jr_file" class="btn-warning form-control">
-
-                        </td>
-                        <td align="center" class="warning"><img style="margin-top:30%;border:1px solid black;" src="" class="img-thumbnail" id="struk_pelunasan_jr_pv"></td>
-                        <td align="center" class="warning"><button id="bt_struk_pelunasan_jr" type="button" disabled class="dlbt"><i class="fa fa-fw fa-trash"></i> Hapus</button></td>
-                    </tr>
 				</tbody>
 				<tfoot>
 					<tr><td align="center" colspan="4">

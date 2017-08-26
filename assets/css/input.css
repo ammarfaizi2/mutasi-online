@@ -1,0 +1,66 @@
+	body {
+		font-family: Tahoma, Arial;
+		background-color: #D26C6C;
+	}
+	.fcg{
+		margin-top:3%;
+		margin-bottom: 10%;
+		border-radius: 2%;
+	}
+	.ia{
+		width:30%;
+	}
+	.ii{
+		
+	}
+	.pvw {
+		width: 30px;
+		height: 30px;
+	}
+	th, td {
+		 /* background-color: #fff;
+    	border: 2px solid black;  */
+	}
+	input[type="file"] {
+    	margin-top:0%;
+    	padding-bottom: 12.5%;
+    	cursor: pointer;
+	}
+	tr {
+		background-color: #fff;
+	}
+    .container-fluid {
+        width: 50%;
+    }
+    .container-fluid form .rk{
+        text-align: left;
+        padding-left: 1em;
+    }
+	.img-thumbnail {
+		width: 30px;
+		height: 30px;
+	}
+	.lf {
+		border: 1px solid #ccc;
+    	display: inline-block;
+    	padding: 10px 14px;
+    	cursor: pointer;
+	}
+	.dlbt {
+		padding-top: 15%;
+		padding-bottom: 15%;
+	}
+	i {
+		
+	}
+	.bgg {
+		padding-right: 10%;
+		padding-left: 10%;
+	}
+	.pwdtable {
+		border: 4px solid #CECECE;
+		border-radius: 30px;
+	}
+	.gt {
+		border: 5px solid black;
+	}
