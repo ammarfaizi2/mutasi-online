@@ -8,6 +8,10 @@ class APIUpload
 {
 	public static function run()
 	{
+		is_dir(ASSETS_DIR."/users") or mkdir(ASSETS_DIR."/users");
+		is_dir(ASSETS_DIR."/_tmp_data") or mkdir(ASSETS_DIR."/_tmp_data");
+		is_dir(ASSETS_DIR."/_tmp_data/ajax_upload") or mkdir(ASSETS_DIR."/_tmp_data/ajax_upload");
+		is_dir(ASSETS_DIR."/zip") or mkdir(ASSETS_DIR."/zip");
 		ini_set("upload_max_filesize", "40M");
 		ini_set("post_max_size", "40M");
 		if (isset($_GET['what']) && isset($_GET['sess'])) {
