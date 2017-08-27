@@ -15,7 +15,7 @@ if (isset($_GET['cari_nopol'])) {
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Permohonan Masuk</title>
+		<title>Data Mutasi Keluar</title>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -49,7 +49,7 @@ if (isset($_GET['cari_nopol'])) {
 		</nav>
 		<center>
 			<div style="margin-bottom: 2%;">
-				<h2>Permohonan Keluar Polres <?php print $user['nama_polres']; ?></h2>
+				<h2>Data Mutasi Keluar Polres <?php print $user['nama_polres']; ?></h2>
 			</div>
 			<div style="margin-bottom:2%;">
 				<form method="get" action="">
@@ -65,7 +65,7 @@ if (isset($_GET['cari_nopol'])) {
 			?>
 			<center>
 			<div style="margin-top: 8%;">
-				<h1 style="font-weight: bold;">Tidak ada permohonan keluar</h1>
+				<h1 style="font-weight: bold;">Tidak ada data mutasi keluar</h1>
 			</div>
 			</center>
 			<?php

@@ -13,7 +13,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Permohonan Masuk</title>
+		<title>Data Mutasi Masuk</title>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -47,7 +47,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 		</nav>
 		<center>
 			<div style="margin-bottom: 2%;">
-				<h2>Permohonan Masuk Polres <?php print $user['nama_polres']; ?></h2>
+				<h2>Data Mutasi Masuk Polres <?php print $user['nama_polres']; ?></h2>
 			</div>
 		</center>
 		<?php
@@ -55,7 +55,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 			?>
 			<center>
 			<div style="margin-top: 8%;">
-				<h1 style="font-weight: bold;">Tidak ada permohonan masuk</h1>
+				<h1 style="font-weight: bold;">Tidak ada data mutasi masuk</h1>
 			</div>
 			</center>
 			<?php

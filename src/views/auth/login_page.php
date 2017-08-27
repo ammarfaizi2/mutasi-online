@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<!-- manifest="cache_manifest.php" -->
-<html>
+<html manifest="cache_manifest.php">
 <head>
 	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
-	<meta name="viewport" content="width=device-width">
 	<title>Login</title>
 	<style type="text/css">
 		.qw{
