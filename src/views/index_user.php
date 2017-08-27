@@ -47,13 +47,13 @@ body {
 	</div>
 	<div class="cg jumbotron">
 		<div class="btg">
-		 	<a href="?pg=input_mutasi"><button class="btn btn-lg btn-success">Input Permohonan Mutasi</button></a>
+		 	<a href="?pg=input_mutasi"><button class="btn btn-lg btn-success">Input Mutasi Keluar</button></a>
 		</div>
 		<div class="btg">
-			<a href="?pg=permohonan_keluar"><button class="btn btn-lg btn-success">Permohonan Keluar</button></a>
+			<a href="?pg=permohonan_keluar"><button class="btn btn-lg btn-success">Data Mutasi Keluar</button></a>
 		</div>
 		<div class="btg">
-			<a href="?pg=permohonan_masuk"><button class="btn btn-lg btn-success">Permohonan Masuk</button></a>
+			<a href="?pg=permohonan_masuk"><button class="btn btn-lg btn-success">Data Mutasi Masuk</button></a>
 		</div>
 		<div class="btg">
 			<a href="?pg=logout"><button class="btn btn-lg btn-warning">Logout</button></a>
