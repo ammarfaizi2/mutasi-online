@@ -64,7 +64,21 @@ class LoginController
                 </html>
                 <?php
             } else {
-                header("location:?msg=login_failed");
+                ?>
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Password salah</title>
+                    <script type="text/javascript">
+                        alert("Username atau Password salah!");
+                        window.location="?re=login_failed&q=<?php print urlencode(rstr(32)); ?>";
+                    </script>
+                </head>
+                <body>
+                
+                </body>
+                </html>
+                <?php
                 die(1);
             }
         } else {

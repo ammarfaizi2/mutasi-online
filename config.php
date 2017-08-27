@@ -1,13 +1,13 @@
 <?php
-define("DBHOST", "localhost");
+/*define("DBHOST", "localhost");
 define("DBUSER", "tegaljat_mutasi");
 define("DBPASS", "triosemut123");
-define("DBNAME", "tegaljat_mutasi");
+define("DBNAME", "tegaljat_mutasi");*/
 
-/*define("DBHOST", "localhost");
+define("DBHOST", "localhost");
 define("DBUSER", "debian-sys-maint");
 define("DBPASS", "");
-define("DBNAME", "mutasi");*/
+define("DBNAME", "mutasi");
 
 /*define("DBHOST", "localhost");
 define("DBUSER", "root");
