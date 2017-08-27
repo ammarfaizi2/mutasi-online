@@ -75,7 +75,7 @@ if (isset($_GET['cari_nopol'])) {
 		<div style="padding: 0 15px; margin-bottom: 4%;">
 			<div class="table-responsive">
 				<table class="table table-bordered">
-					<tr class="active"><th><center>No.</center></th><th><center>Tanggal</center></th><th style="padding-left: 5px;padding-right: 5px;"><center>Polres Tujuan</center></th><th><center>Nopol</center></th><th><center>Nama Pemilik</center></th><th><center>No Rangka</center></th><th><center>No Mesin</center></th><th><center>No BPKB</center></th><th><center>Status</center></th><th><center>Berkas</center></th></tr>
+					<tr class="active"><th><center>No.</center></th><th><center>Tanggal Pengiriman</center></th><th style="padding-left: 5px;padding-right: 5px;"><center>Polres Tujuan</center></th><th><center>Nopol</center></th><th><center>Nama Pemilik</center></th><th><center>No Rangka</center></th><th><center>No Mesin</center></th><th><center>No BPKB</center></th><th><center>Status</center></th><th><center>Berkas</center></th></tr>
 					<?php
 					$page = (isset($_GET['page']))? (int)$_GET['page'] : 1;
 					$limit = 5; // Jumlah data per halamannya
