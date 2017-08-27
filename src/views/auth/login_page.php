@@ -11,8 +11,8 @@
 	  		<h2 style="font-family:Helvetica;">Login Mutasi</h2>
 	  	</div>
 		<form class="login-form" method="post" action="">
-			<input type="text" name="username" placeholder="Username">
-			<input type="password" name="password" placeholder="Password">
+			<input type="text" name="username" placeholder="Username" required>
+			<input type="password" name="password" placeholder="Password" required>
 			<button name="login">Login</button>
 		</form>
 	  </div>

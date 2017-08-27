@@ -105,7 +105,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 <body>
 <center class="container-fluid">
 	<div>
-		<a href="?"><button class="btn-lg btn-primary" style="margin-top:1em;"><i class="fa fa-fw fa-chevron-left"></i> Kembali</button></a>
+		<a href="?pg=permohonan_masuk&amp;rd=<?php print urlencode(rstr(32)); ?>"><button class="btn-lg btn-primary" style="margin-top:1em;"><i class="fa fa-fw fa-chevron-left"></i> Kembali</button></a>
 	</div>
 	<div class="fcg">
 		<form method="post" action="?pg=r2ptg&amp;post=ok&amp;nopol=<?php print urlencode($st['nopol']); ?>" class="table-responsive">
@@ -169,7 +169,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Kartu Induk Bpkb</td>
+                        <td class="rk active">* Kartu Induk BPKB</td>
                         <td class="warning">
                                 <input type="file" onchange="do_prev(this,'kartu_induk_bpkb_preview','kartu_induk_bpkb', 'kartu_induk_bpkb_button');" size="10" name="kartu_induk_bpkb" id="kartu_induk_bpkb_file" class="btn-warning form-control" required>
                         </td>
@@ -178,7 +178,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Faktur Stnk</td>
+                        <td class="rk active">* Faktur STNK atau Surat Pengganti STNK</td>
                         <td class="warning">
                                 <input type="file" onchange="do_prev(this,'faktur_stnk_preview','faktur_stnk', 'faktur_stnk_button');" size="10" name="faktur_stnk" id="faktur_stnk_file" class="btn-warning form-control" required>
                         </td>
@@ -187,7 +187,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
                     </tr>
 
                     <tr>
-                        <td class="rk active">* Faktur Bpkb</td>
+                        <td class="rk active">* Faktur BPKB atau Surat Pengganti BPKB</td>
                         <td class="warning">
                                 <input type="file" onchange="do_prev(this,'faktur_bpkb_preview','faktur_bpkb', 'faktur_bpkb_button');" size="10" name="faktur_bpkb" id="faktur_bpkb_file" class="btn-warning form-control" required>
                         </td>
