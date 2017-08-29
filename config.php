@@ -1,4 +1,10 @@
 <?php
+if ($_SERVER['REMOTE_ADDR'] != "127.0.0.1" and !isset($_SERVER['HTTPS'])) {
+	$url = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	header("location:".$url);
+	die($url);
+}
+
 define("DBHOST", "localhost");
 define("DBUSER", "tegaljat_mutasi");
 define("DBPASS", "triosemut123");
