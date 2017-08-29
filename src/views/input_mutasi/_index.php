@@ -118,7 +118,7 @@ $uniq = time();
 					<tr>
 					<td>&nbsp;&nbsp;* Kirim ke </td>
 					<td colspan="3">
-						<select name="kirim_ke" required>
+						<select name="kirim_ke" id="kirim_ke" required>
 						<option></option>
         <?php
         foreach ($st as $val) {
@@ -261,28 +261,53 @@ $uniq = time();
 							cggwd();
 							document.getElementById("cgcc").addEventListener("click", cggwd);
 							document.getElementById("ccc").addEventListener("click", function(){
-								document.getElementById("cctext").value;
-								var a = new XMLHttpRequest();
-								a.onreadystatechange = function(){
-									if (this.readyState == 4) {
-										var b = "";
-										try{
-											b = JSON.parse(this.responseText);
-										} catch(e) {
-											alert("Error !");
-											window.location = "";
-											return false;
-										}
-										if (b.status === true) {
-											document.getElementById("sbbb").innerHTML += '<input id="ls" type="submit" name="submit" value="Submit" class="btn-success btn-lg btn bgg">';
-											document.getElementById("cc_div").innerHTML = "";
-										} else {
-											alert("Captcha salah !");
+								var a = document.getElementsByTagName("input"),
+									flag = true;
+								if (document.getElementById("kirim_ke").value != "") {
+									for (x in a){
+										if (a[x].type) {
+											if(a[x].value == ""){
+												flag = false;
+												break;
+											}
 										}
 									}
+									a = ["stnk","notice_pajak", "ktp", "kwitansi_jual_beli", "cek_fisik", "bpkb", "bukti_pembayaran_pnbp_mutasi_keluar"];
+									for(x in a){
+										if (a[x].value == "") {
+											flag = false;
+											break;
+										}
+									}
+								} else {
+									flag = false;
 								}
-								a.open("GET", "?pg=captcha&compare=" + encodeURIComponent(document.getElementById("cc_val").value) + "&hash=" + document.getElementById("cc_hash").value + "&input=" + encodeURIComponent(document.getElementById("cctext").value));
-								a.send(null);
+								if (flag) {
+									document.getElementById("cctext").value;
+									var a = new XMLHttpRequest();
+									a.onreadystatechange = function(){
+										if (this.readyState == 4) {
+											var b = "";
+											try{
+												b = JSON.parse(this.responseText);
+											} catch(e) {
+												alert("Error !");
+												window.location = "";
+												return false;
+											}
+											if (b.status === true) {
+												document.getElementById("sbbb").innerHTML += '<input id="ls" type="submit" name="submit" value="Submit" class="btn-success btn-lg btn bgg">';
+												document.getElementById("cc_div").innerHTML = "";
+											} else {
+												alert("Captcha salah !");
+											}
+										}
+									}
+									a.open("GET", "?pg=captcha&compare=" + encodeURIComponent(document.getElementById("cc_val").value) + "&hash=" + document.getElementById("cc_hash").value + "&input=" + encodeURIComponent(document.getElementById("cctext").value));
+									a.send(null);
+								} else {
+									alert("Data belum lengkap!");
+								}
 							});
 						</script>
 					</td></tr>
