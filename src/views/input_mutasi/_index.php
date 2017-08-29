@@ -26,6 +26,13 @@ $uniq = time();
 	function upload(_file, file_name, sess, funger)
 	{
 		var bb = document.getElementById("ls");
+		try{
+			typeof bb.disabled;
+		} catch(e) {
+			var bb = {
+				"disabled" : 0
+			};
+		}
 	    bb.disabled = 1;
 		//var _file = document.getElementById(file);
 		if(_file.files.length === 0){
