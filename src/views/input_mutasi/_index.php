@@ -17,7 +17,7 @@ $uniq = time();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Input Mutasi Keluar</title>
+<title>Input Permohonan Cabut Berkas</title>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
@@ -112,7 +112,7 @@ $uniq = time();
 		<form method="post" action="?pg=input_mutasi&post=ok" class="table-responsive">
 			<table class="table table-striped table-bordered table-hover table-condensed pwdtable gt">
 				<thead>
-					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Input Mutasi Keluar</h3></center></th></tr>
+					<tr class="info"><th colspan="4" align="center" id="thd" class="rk" style="padding-bottom:3%;"><center><h3>Input Permohonan Cabut Berkas</h3></center></th></tr>
 				</thead>
 				<tbody>
 					<tr>

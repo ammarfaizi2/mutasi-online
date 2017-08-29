@@ -13,7 +13,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Data Mutasi Masuk</title>
+		<title>Data Permohonan Cabut Berkas</title>
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -31,6 +31,14 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 		.wdd:hover{
 			background-color: #E7E0E0;
 		}
+		.tbr{
+			text-decoration:underline;
+			color:#27ADCF;
+		}
+		.tbr:hover{
+			text-decoration: none;
+			color:#1D69D3;
+		}
 		</style>
 	</head>
 	<body>
@@ -47,7 +55,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 		</nav>
 		<center>
 			<div style="margin-bottom: 2%;">
-				<h2>Data Mutasi Masuk Polres <?php print $user['nama_polres']; ?></h2>
+				<h2>Data Permohonan Cabut Berkas Polres <?php print $user['nama_polres']; ?></h2>
 			</div>
 		</center>
 		<?php
@@ -55,7 +63,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 			?>
 			<center>
 			<div style="margin-top: 8%;">
-				<h1 style="font-weight: bold;">Tidak ada data mutasi masuk</h1>
+				<h1 style="font-weight: bold;">Tidak ada data permohonan cabut berkas</h1>
 			</div>
 			</center>
 			<?php
@@ -82,7 +90,7 @@ $get_jumlah = $sql2->fetch(PDO::FETCH_NUM);
 						<td class="align-middle text-center" width="8" align="center"><?php print $no; ?></td>
 						<td class="align-middle text-center" width="110" align="center"><?php print date("d F Y h:i:s A", strtotime($val['tanggal'])); ?></td>
 						<td class="align-middle text-center" width="7%;" align="center"><?php print $val['pemohon']; ?></td>
-						<td style="cursor:pointer;" onclick="window.location='?pg=r2ptg&amp;npid=<?php print htmlspecialchars(urlencode(base64_encode(gzdeflate(base64_encode($val['nopol'])))))."&amp;rpd_avoid_cache=".urlencode(rstr(32)); ?>'" class="wdd align-middle text-center" align="center"><?php print $val['nopol']; ?></td>
+						<td style="cursor:pointer;" onclick="window.location='?pg=r2ptg&amp;npid=<?php print htmlspecialchars(urlencode(base64_encode(gzdeflate(base64_encode($val['nopol'])))))."&amp;rpd_avoid_cache=".urlencode(rstr(32)); ?>'" class="wdd tbr align-middle text-center" align="center"><?php print $val['nopol']; ?></td>
 						<td class="align-middle text-center" width="10%;" align="center"><?php print $val['nama_pemilik']; ?></td>
 						<td class="align-middle text-center" align="center"><?php print $val['no_rangka']; ?></td>
 						<td class="align-middle text-center" width="15%;" align="center"><?php print $val['no_mesin']; ?></td>

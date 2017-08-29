@@ -46,7 +46,8 @@ body {
 }
 .btgg{
 	font-family: Helvetica, Arial;
-	padding: 2% 14% 2% 14%;
+	padding: 3% 10% 3% 10%;
+	word-wrap: break-word;
 	color:#fff;
 	background-color:#39C21B;
 	border: 3px solid #000;
@@ -59,7 +60,7 @@ body {
 }
 .bfg{
 	font-family: Helvetica, Arial;
-	padding: 2% 14% 2% 14%;
+	padding: 2% 24% 2% 24%;
 	color: #fff;
 	font-size: 125%;
 	background-color: #EC971F;
@@ -82,9 +83,9 @@ body {
 			<h2 style="font-family:Helvetica;font-weight:bold;">Mutasi Online Polres <?php print $nama_polres; ?></h2>
 		</div>
 		<div class="cg">
-			<p><a href="?pg=input_mutasi"><button class="btgg">Input Mutasi Keluar</button></a></p>
+			<p><a href="?pg=input_mutasi"><button class="btgg" style="padding: 3% 9% 3% 9%;">Input Permohonan Cabut Berkas</button></a></p>
 			<p><a href="?pg=permohonan_keluar"><button class="btgg">Data Mutasi Keluar</button></a></p>
-			<p><a href="?pg=permohonan_masuk"><button class="btgg">Data Mutasi Masuk</button></a></p>
+			<p><a href="?pg=permohonan_masuk"><button class="btgg">Data Permohonan Cabut Berkas</button></a></p>
 			<p><a href="?pg=logout"><button class="bfg">Logout</button></a></p>
 		</div>
 	</div>
