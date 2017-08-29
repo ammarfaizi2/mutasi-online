@@ -7,6 +7,7 @@ use System\DB;
 use Models\User;
 use Controllers\R2PTG;
 use Controllers\APIUpload;
+use Controllers\CaptchaController;
 use Controllers\DownloadController;
 use Controllers\InputMutasiController;
 use Controllers\PermohonanMasukController;
@@ -53,6 +54,9 @@ class App
                 break;
             case 'upload':
                     APIUpload::run();
+                break;
+            case 'captcha':
+                    CaptchaController::run();
                 break;
             default:
                 http_response_code(404);
