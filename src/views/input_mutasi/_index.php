@@ -85,7 +85,13 @@ $uniq = time();
 				bt.disabled = 0;
 				bt.addEventListener("click", function(){
 					var bb = document.getElementById("ls");
-					bb.disabled = 1;
+					try	{
+						bb.disabled = 1;
+					} catch (e) {
+						bb = {
+							"disabled":0
+						};
+					}
 					var a = new XMLHttpRequest();
 					a.onreadystatechange = function()
 					{
