@@ -262,7 +262,7 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 							document.getElementById("ccc").addEventListener("click", function(){
 								var a = document.getElementsByTagName("input"),
 									flag = true;
-								var a = ["surat_pengantar", "surat_keterangan_pindah_pengganti", "tanda_bukti_pengiriman_dokumen", "daftar_kelengkapan_dokumen", "surat_keterangan_fiskol_antar_daerah", "kartu_induk_bpkb", "faktur_stnk", "faktur_bpkb", "form_a"];
+								var a = ["surat_pengantar", "surat_keterangan_pindah_pengganti", "tanda_bukti_pengiriman_dokumen", "daftar_kelengkapan_dokumen", "surat_keterangan_fiskol_antar_daerah", "kartu_induk_bpkb", "faktur_stnk", "faktur_bpkb"];
 								for(x in a){
 									if (document.getElementById(a[x]+"_file").value == "") {
 										flag = false;
