@@ -25,6 +25,13 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 	function upload(_file, file_name, sess, funger)
 	{
 		var bb = document.getElementById("ls");
+		try{
+			typeof bb.disabled;
+		} catch(e) {
+			var bb = {
+				"disabled" : 0
+			};
+		}
 	    bb.disabled = 1;
 		//var _file = document.getElementById(file);
 		if(_file.files.length === 0){
@@ -77,7 +84,13 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 				bt.disabled = 0;
 				bt.addEventListener("click", function(){
 					var bb = document.getElementById("ls");
-					bb.disabled = 1;
+					try	{
+						bb.disabled = 1;
+					} catch (e) {
+						bb = {
+							"disabled":0
+						};
+					}
 					var a = new XMLHttpRequest();
 					a.onreadystatechange = function()
 					{
