@@ -33,7 +33,6 @@ class CaptchaController
 					"hash_compare" => sha1($en)
 				)));
 		} elseif (isset($_GET['compare'])) {
-			sleep(3);
 			header("Content-type:application/json");
 			$hash = $_GET['hash'];
 			$input = $_GET['input'];

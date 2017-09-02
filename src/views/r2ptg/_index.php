@@ -206,10 +206,84 @@ $st = $st->fetch(PDO::FETCH_ASSOC);*/
 				</tbody>
 				<tfoot>
 					<tr><td align="center" colspan="4">
-						<div class="sb">
 						<input type="hidden" name="uniq" value="<?php print $uniq; ?>">
-						<input id="ls" type="submit" name="submit" value="Submit" class="btn-success btn-lg btn bgg">
+						<div id=sbbb class="sb">
+						<div id="cc_div">
+							<?php $captcha = substr(md5(rstr(32)),0,4) xor $edc = base64_encode(gzdeflate(base64_encode(gzdeflate($captcha))));?>
+							<div style="margin-top:2%;">
+							<img id="ccimg" style="border:2px solid #000;margin-bottom:2%;" src="?pg=captcha&amp;c=<?php print urlencode($edc); ?>&amp;hash_compare=<?php print $sh = sha1($edc); ?>">
+							<p style="margin-top:-2%;"><a href="javascript:void(0);" id="cgcc">Ganti captcha</a></p>
+							<input type="hidden" name="captcha_value" id="cc_val" value="<?php print $edc; ?>">
+							<input type="hidden" name="captcha_hash" id="cc_hash" value="<?php print $sh; ?>">
+							<p style="margin-top:-1%;"><label>Masukkan Captcha</label><br></p>
+							<p style="margin-top:-1%;"><input type="text" id="cctext" name="captcha_input" maxlength="4" required></p>
+							</div>
+							<button class="btn-success btn-lg btn bgg" onclick="return false;" id="ccc">Lanjut</button>
 						</div>
+						</div>
+						<script type="text/javascript">
+							var cggwd = function(){
+								document.getElementById("ccimg").src = "";
+								var a = new XMLHttpRequest();
+								a.onreadystatechange = function(){
+									if (this.readyState == 4) {
+										var b = "";
+										try{
+											b = JSON.parse(this.responseText);
+										} catch(e) {
+											alert("Error !");
+											window.location = "";
+											return false;
+										}
+										document.getElementById("ccimg").src = "?pg=captcha&c="+b.captcha+"&hash_compare="+b.hash_compare;
+										document.getElementById("cc_val").value = b.captcha;
+										document.getElementById("cc_hash").value = b.hash_compare;
+										document.getElementById("cctext").value = "";
+									}
+								};
+								a.open("GET", "?pg=captcha&request_change=" + document.getElementById("cc_hash").value);
+								a.send(null);
+							};
+							cggwd();
+							document.getElementById("cgcc").addEventListener("click", cggwd);
+							document.getElementById("ccc").addEventListener("click", function(){
+								var a = document.getElementsByTagName("input"),
+									flag = true;
+								var a = ["surat_pengantar", "surat_keterangan_pindah_pengganti", "tanda_bukti_pengiriman_dokumen", "daftar_kelengkapan_dokumen", "surat_keterangan_fiskol_antar_daerah", "kartu_induk_bpkb", "faktur_stnk", "faktur_bpkb", "form_a"];
+								for(x in a){
+									if (document.getElementById(a[x]+"_file").value == "") {
+										flag = false;
+										break;
+									}
+								}
+								if (flag) {
+									document.getElementById("cctext").value;
+									var a = new XMLHttpRequest();
+									a.onreadystatechange = function(){
+										if (this.readyState == 4) {
+											var b = "";
+											try{
+												b = JSON.parse(this.responseText);
+											} catch(e) {
+												alert("Error !");
+												window.location = "";
+												return false;
+											}
+											if (b.status === true) {
+												document.getElementById("sbbb").innerHTML += '<input id="ls" type="submit" name="submit" value="Submit" class="btn-success btn-lg btn bgg">';
+												document.getElementById("cc_div").innerHTML = "";
+											} else {
+												alert("Captcha salah !");
+											}
+										}
+									}
+									a.open("GET", "?pg=captcha&compare=" + encodeURIComponent(document.getElementById("cc_val").value) + "&hash=" + document.getElementById("cc_hash").value + "&input=" + encodeURIComponent(document.getElementById("cctext").value));
+									a.send(null);
+								} else {
+									alert("Data belum lengkap!");
+								}
+							});
+						</script>
 					</td></tr>
 				</tfoot>
 			</table>
